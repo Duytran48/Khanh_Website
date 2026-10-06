@@ -1,0 +1,109 @@
+@model Khanh_Project.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Chủ Đề Từ Vựng TOEIC";
+    var vocabCompletedCount = Model.VocabTopics.Count(v => v.Status == "completed");
+    var vocabInProgressCount = Model.VocabTopics.Count(v => v.Status == "in-progress");
+}
+
+<div class="page-container py-4">
+    <div class="container-fluid px-lg-5">
+        <!-- Breadcrumb & Header -->
+        <div class="mb-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-2">
+                    <li class="breadcrumb-item"><a asp-area="Student" asp-controller="Home" asp-action="Index" class="text-decoration-none text-success">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Từ vựng TOEIC</li>
+                </ol>
+            </nav>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h2 class="fw-bold text-dark mb-1">600 Từ Vựng TOEIC Cốt Lõi</h2>
+                    <p class="text-muted small mb-0">Học theo phương pháp lặp lại ngắt quãng (Spaced Repetition) và phát âm bản xứ chuẩn.</p>
+                </div>
+
+                <!-- Vocabulary Topic Filter Pills -->
+                <div class="vocab-filter-pills d-flex flex-wrap gap-2">
+                    <button class="filter-btn active" data-vocab-filter="all" onclick="filterVocabTopics('all')">
+                        <i class="bi bi-grid-fill me-1"></i>Tất cả (@Model.VocabTopics.Count)
+                    </button>
+                    <button class="filter-btn" data-vocab-filter="completed" onclick="filterVocabTopics('completed')">
+                        <i class="bi bi-check-circle-fill text-success me-1"></i>Đã học (@vocabCompletedCount)
+                    </button>
+                    <button class="filter-btn" data-vocab-filter="in-progress" onclick="filterVocabTopics('in-progress')">
+                        <i class="bi bi-hourglass-split text-warning me-1"></i>Đang học (@vocabInProgressCount)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vocab Cards Grid -->
+        <div class="row g-4" id="vocabTopicsGrid">
+            @foreach (var topic in Model.VocabTopics)
+            {
+                var progressPercent = (int)((double)topic.LearnedWords / topic.TotalWords * 100);
+                <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="@topic.Status">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                        <div>
+                            <!-- Header: Icon & Badge -->
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                    <i class="bi @topic.Icon fs-4"></i>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <span class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target @topic.TargetBand</span>
+                                    @if (topic.Status == "completed")
+                                    {
+                                        <span class="badge bg-success-subtle text-success border border-success border-opacity-25 px-2 py-1 rounded-pill small">Hoàn thành</span>
+                                    }
+                                    else if (topic.Status == "in-progress")
+                                    {
+                                        <span class="badge bg-warning-subtle text-warning-emphasis border border-warning border-opacity-25 px-2 py-1 rounded-pill small">Đang học</span>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Title & Description -->
+                            <h5 class="fw-bold text-dark mb-2">@topic.Title</h5>
+                            <p class="text-muted small mb-4">@topic.Description</p>
+                        </div>
+
+                        <!-- Progress & Action -->
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center small mb-1">
+                                <span class="text-muted">Tiến độ từ vựng:</span>
+                                <strong class="@(topic.Status == "completed" ? "text-success" : topic.Status == "in-progress" ? "text-warning-emphasis" : "text-muted")">
+                                    @topic.LearnedWords / @topic.TotalWords từ (@progressPercent%)
+                                </strong>
+                            </div>
+                            <div class="progress mb-4" style="height: 8px;">
+                                <div class="progress-bar @(topic.Status == "completed" ? "bg-success" : topic.Status == "in-progress" ? "bg-warning" : "bg-secondary")" 
+                                     role="progressbar" 
+                                     style="width: @progressPercent%"></div>
+                            </div>
+
+                            <!-- Button by Status -->
+                            @if (topic.Status == "completed")
+                            {
+                                <button class="btn btn-outline-success w-100 fw-bold py-2 rounded-3" onclick="alert('Đang mở ôn tập từ vựng: @topic.Title')">
+                                    <i class="bi bi-arrow-repeat me-1"></i> Ôn tập lại (@topic.TotalWords từ)
+                                </button>
+                            } 
+                            else if (topic.Status == "in-progress")
+                            {
+                                <button class="btn btn-warning w-100 fw-bold py-2 rounded-3 text-dark" onclick="alert('Tiếp tục học chủ đề: @topic.Title (Còn @(topic.TotalWords - topic.LearnedWords) từ)')">
+                                    <i class="bi bi-play-fill me-1"></i> Học tiếp (@topic.LearnedWords/@topic.TotalWords từ)
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-emerald w-100 fw-bold py-2 rounded-3" onclick="alert('Bắt đầu học chủ đề mới: @topic.Title (@topic.TotalWords từ)')">
+                                    <i class="bi bi-book me-1"></i> Bắt đầu học
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

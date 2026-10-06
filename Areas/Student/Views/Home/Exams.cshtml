@@ -1,0 +1,183 @@
+@model Khanh_Project.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Thư Viện Đề Thi TOEIC";
+    var examCompletedCount = Model.AvailableExams.Count(e => e.Status == "completed");
+    var examInProgressCount = Model.AvailableExams.Count(e => e.Status == "in-progress");
+}
+
+<div class="page-container py-4">
+    <div class="container-fluid px-lg-5">
+        <!-- Breadcrumb & Header -->
+        <div class="mb-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-2">
+                    <li class="breadcrumb-item"><a asp-area="Student" asp-controller="Home" asp-action="Index" class="text-decoration-none text-success">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thư viện đề thi</li>
+                </ol>
+            </nav>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h2 class="fw-bold text-dark mb-1">Thư Viện Đề Thi TOEIC</h2>
+                    <p class="text-muted small mb-0">Tuyển tập các bộ đề thi thử sát với cấu trúc đề thi thật của ETS nhất.</p>
+                </div>
+                
+                <!-- Status filter pills -->
+                <div class="exam-filter-pills d-flex flex-wrap gap-2">
+                    <button class="filter-btn active" data-filter="all" onclick="filterExams('all')">
+                        <i class="bi bi-grid-fill me-1"></i>Tất cả (@Model.AvailableExams.Count)
+                    </button>
+                    <button class="filter-btn" data-filter="completed" onclick="filterExams('completed')">
+                        <i class="bi bi-check-circle-fill text-success me-1"></i>Đã hoàn thành (@examCompletedCount)
+                    </button>
+                    <button class="filter-btn" data-filter="in-progress" onclick="filterExams('in-progress')">
+                        <i class="bi bi-hourglass-split text-warning me-1"></i>Đang làm dở (@examInProgressCount)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Series filter pills -->
+            <div class="d-flex flex-wrap align-items-center gap-2 pt-3 mt-3 border-top">
+                <span class="text-muted small fw-semibold me-1"><i class="bi bi-funnel-fill text-success me-1"></i>Bộ đề:</span>
+                <div class="exam-series-pills d-flex flex-wrap gap-2">
+                    <button class="filter-btn active py-1 px-3 small" data-series-filter="all" onclick="filterExamSeries('all')">
+                        Tất cả bộ đề
+                    </button>
+                    <button class="filter-btn py-1 px-3 small" data-series-filter="ETS" onclick="filterExamSeries('ETS')">
+                        ETS
+                    </button>
+                    <button class="filter-btn py-1 px-3 small" data-series-filter="HACKER" onclick="filterExamSeries('HACKER')">
+                        HACKER
+                    </button>
+                    <button class="filter-btn py-1 px-3 small" data-series-filter="BIGSTEP" onclick="filterExamSeries('BIGSTEP')">
+                        BIG STEP
+                    </button>
+                    <button class="filter-btn py-1 px-3 small" data-series-filter="ECONOMY" onclick="filterExamSeries('ECONOMY')">
+                        ECONOMY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exam Cards Grid -->
+        <div class="row g-4" id="examCardsGrid">
+            @foreach (var exam in Model.AvailableExams)
+            {
+                <div class="col-md-6 col-lg-4 exam-card-item" data-status="@exam.Status" data-series="@exam.Series">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm exam-card overflow-hidden position-relative">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex gap-1 align-items-center">
+                                    <span class="badge bg-emerald-light text-emerald px-3 py-1 rounded-pill fw-semibold">
+                                        @exam.Category
+                                    </span>
+                                    <span class="badge bg-light text-secondary border px-2 py-1 rounded-pill small fw-semibold">
+                                        @exam.Series
+                                    </span>
+                                </div>
+                                
+                                @if (exam.Status == "completed")
+                                {
+                                    <span class="badge bg-success-subtle text-success border border-success border-opacity-25 px-2 py-1 rounded-pill small fw-semibold">
+                                        <i class="bi bi-check2-circle me-1"></i>Đã xong @(exam.Score.HasValue ? $"({exam.Score}đ)" : "")
+                                    </span>
+                                }
+                                else if (exam.Status == "in-progress")
+                                {
+                                    <span class="badge bg-warning-subtle text-warning-emphasis border border-warning border-opacity-25 px-2 py-1 rounded-pill small fw-semibold">
+                                        <i class="bi bi-clock-history me-1"></i>Đang làm (@exam.CompletedQuestions/@exam.TotalQuestions câu)
+                                    </span>
+                                }
+                            </div>
+
+                            <h5 class="card-title fw-bold text-dark mb-2">@exam.Title</h5>
+                            <p class="card-text text-muted small mb-3 flex-grow-1">@exam.Description</p>
+
+                            @if (exam.Status == "in-progress")
+                            {
+                                var progressPercent = (int)((double)exam.CompletedQuestions / exam.TotalQuestions * 100);
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between text-muted x-small mb-1">
+                                        <span>Tiến độ làm bài:</span>
+                                        <strong class="text-warning-emphasis">@progressPercent%</strong>
+                                    </div>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: @progressPercent%"></div>
+                                    </div>
+                                </div>
+                            }
+                            else if (exam.Status == "completed")
+                            {
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between text-muted x-small mb-1">
+                                        <span>Kết quả:</span>
+                                        <strong class="text-success">Đã hoàn thành 100%</strong>
+                                    </div>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between text-muted x-small mb-1">
+                                        <span>Tiến độ làm bài:</span>
+                                        <strong class="text-secondary">0%</strong>
+                                    </div>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-secondary opacity-50" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="exam-meta-grid p-3 rounded-3 bg-light-green mb-4">
+                                <div class="meta-item">
+                                    <i class="bi bi-clock-history text-success"></i>
+                                    <span>@exam.DurationMinutes phút</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-question-circle text-success"></i>
+                                    <span>@exam.TotalQuestions câu</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="bi bi-people text-success"></i>
+                                    <span>@exam.ParticipantsCount.ToString("N0") lượt</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                @if (exam.Status == "completed")
+                                {
+                                    <button class="btn btn-outline-success w-100 fw-bold py-2 rounded-3" onclick="startExam(@exam.Id, '@exam.Title')">
+                                        <i class="bi bi-arrow-repeat me-1"></i> Làm lại
+                                    </button>
+                                    <button class="btn btn-success px-3 py-2 rounded-3" title="Xem kết quả" onclick="alert('Kết quả bài thi: @exam.Title\nĐiểm số đạt được: @exam.Score / 990')">
+                                        <i class="bi bi-clipboard-check"></i>
+                                    </button>
+                                }
+                                else if (exam.Status == "in-progress")
+                                {
+                                    <button class="btn btn-warning w-100 fw-bold py-2 rounded-3 text-dark" onclick="startExam(@exam.Id, '@exam.Title')">
+                                        <i class="bi bi-play-fill me-1"></i> Làm tiếp (@exam.CompletedQuestions/@exam.TotalQuestions)
+                                    </button>
+                                    <button class="btn btn-outline-secondary px-3 py-2 rounded-3" title="Chi tiết đề" onclick="alert('Đề thi: @exam.Title\nThời lượng: @exam.DurationMinutes phút\nĐã làm: @exam.CompletedQuestions/@exam.TotalQuestions câu')">
+                                        <i class="bi bi-info-circle"></i>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-emerald w-100 fw-bold py-2 rounded-3" onclick="startExam(@exam.Id, '@exam.Title')">
+                                        <i class="bi bi-pencil-square me-1"></i> Làm bài
+                                    </button>
+                                    <button class="btn btn-outline-secondary px-3 py-2 rounded-3" title="Chi tiết đề" onclick="alert('Đề thi: @exam.Title\nThời lượng: @exam.DurationMinutes phút\nSố câu: @exam.TotalQuestions')">
+                                        <i class="bi bi-info-circle"></i>
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

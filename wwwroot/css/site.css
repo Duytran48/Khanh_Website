@@ -1,0 +1,534 @@
+/* =========================================================
+   TOEIC MASTER - GREEN & WHITE THEME DESIGN SYSTEM
+========================================================= */
+
+:root {
+  --color-primary: #16a34a;       /* Forest Emerald Green */
+  --color-primary-hover: #15803d;
+  --color-primary-dark: #047857;
+  --color-primary-light: #dcfce7;
+  --color-primary-subtle: #f0fdf4;
+  
+  --color-accent: #10b981;        /* Mint Vibrant */
+  --color-bg: #f8fafc;            /* Clean light grey-white canvas */
+  --color-card-bg: #ffffff;
+  
+  --color-text-dark: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+
+  --header-footer-min-height: 72px;
+  --transition-fast: 0.2s ease;
+  --transition-slider: 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-dark);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   1. HEADER & SMOOTH SLIDING NAVBAR
+========================================================= */
+.site-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(22, 163, 74, 0.15);
+  min-height: var(--header-footer-min-height);
+  display: flex;
+  align-items: center;
+  z-index: 1030;
+}
+
+/* Brand Logo */
+.brand-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #16a34a 0%, #10b981 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+  transition: transform var(--transition-fast);
+}
+
+.brand-icon-box.small {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.navbar-brand:hover .brand-icon-box {
+  transform: scale(1.05);
+}
+
+.brand-title {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.5px;
+  color: var(--color-text-dark);
+  line-height: 1.1;
+}
+
+.brand-highlight {
+  color: var(--color-primary);
+}
+
+.brand-sub {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Smooth Sliding Background Pill Navbar */
+.navbar-slidebar-wrapper {
+  position: relative;
+  background: #edf2f7;
+  border-radius: 9999px;
+  padding: 4px;
+  border: 1px solid rgba(22, 163, 74, 0.15);
+  display: inline-flex;
+  align-items: center;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* The Animated Background Pill (Glides directly on click) */
+.nav-slider-indicator {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: calc(100% - 8px);
+  background: linear-gradient(135deg, #16a34a 0%, #10b981 100%);
+  border-radius: 9999px;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+  transition: transform var(--transition-slider), width var(--transition-slider), opacity 0.2s ease;
+  opacity: 0;
+  will-change: transform, width;
+}
+
+.custom-slide-nav {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 2;
+}
+
+.custom-slide-nav .nav-link {
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: transparent !important;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-slide-nav .nav-link:hover {
+  color: var(--color-primary);
+}
+
+.custom-slide-nav .nav-link.active {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+/* Auth Buttons */
+.btn-auth-login {
+  color: var(--color-primary);
+  background: transparent;
+  border: 1.5px solid var(--color-primary);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: 10px;
+  transition: all var(--transition-fast);
+}
+
+.btn-auth-login:hover {
+  background: var(--color-primary-subtle);
+  color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-auth-register {
+  color: #ffffff;
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  border: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 9px 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.btn-auth-register:hover {
+  background: linear-gradient(135deg, #15803d 0%, #047857 100%);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(22, 163, 74, 0.35);
+}
+
+/* =========================================================
+   2. BODY & HERO BANNER
+========================================================= */
+.page-container {
+  min-height: calc(100vh - 144px);
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #eafaf1 0%, #ffffff 60%, #f0fdf4 100%);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.fw-extrabold {
+  font-weight: 800;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-xs {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.x-small {
+  font-size: 0.72rem;
+}
+
+.stat-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.btn-emerald {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-emerald:hover {
+  background: var(--color-primary-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+.circle-progress-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-primary-subtle);
+  border: 3px solid var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   3. EXAM CARDS & FILTERS
+========================================================= */
+.filter-btn {
+  background: #ffffff;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.2);
+}
+
+.exam-card {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid #f1f5f9;
+}
+
+.exam-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.08) !important;
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.bg-emerald-light {
+  background-color: var(--color-primary-light);
+}
+
+.text-emerald {
+  color: var(--color-primary-dark);
+}
+
+.bg-light-green {
+  background-color: var(--color-primary-subtle);
+}
+
+.exam-meta-grid {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* =========================================================
+   4. VOCABULARY & GRAMMAR CARDS
+========================================================= */
+.vocab-card {
+  transition: all var(--transition-fast);
+  border-top: 4px solid var(--color-primary) !important;
+}
+
+.vocab-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+.grammar-card {
+  transition: all var(--transition-fast);
+}
+
+.grammar-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.08) !important;
+}
+
+/* =========================================================
+   5. FOOTER (Balanced with Header)
+========================================================= */
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid rgba(22, 163, 74, 0.15);
+  min-height: var(--header-footer-min-height);
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  margin-top: auto;
+}
+
+.footer-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary-subtle);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-icon:hover {
+  background: var(--color-primary);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* Smooth anchor scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+.section-anchor {
+  scroll-margin-top: 90px;
+}
+/* Social Login Buttons */
+.btn-social-google {
+  background-color: #ffffff;
+  border-color: #e2e8f0 !important;
+  border-radius: 10px;
+  transition: all var(--transition-fast);
+}
+
+.btn-social-google:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1 !important;
+  transform: translateY(-1px);
+}
+
+.btn-social-facebook {
+  background-color: #1877f2;
+  border-radius: 10px;
+  transition: all var(--transition-fast);
+}
+
+.btn-social-facebook:hover {
+  background-color: #0c63d4;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Vocabulary Topic Cards */
+.vocab-topic-card {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid #f1f5f9;
+}
+
+.vocab-topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.08) !important;
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.topic-icon-box {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   OVERVIEW CIRCLE PROGRESS & SUMMARY CARDS
+========================================================= */
+.overview-card {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.overview-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+.circle-score-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-score-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.circle-score-content .score-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2563eb;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.circle-score-content .score-label {
+  font-size: 0.68rem;
+  color: #64748b;
+  font-weight: 600;
+  display: block;
+}
+
+.overview-icon-badge {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+/* =========================================================
+   FOOTER MODERN STYLES
+========================================================= */
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+
+.footer-nav-link {
+  color: #64748b;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-nav-link:hover {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.footer-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  font-size: 0.95rem;
+}
+
+.footer-social-btn:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+}
+
+.hover-success:hover {
+  color: var(--color-primary) !important;
+}
