@@ -11,10 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- Bootstrap 5 & Icons -->
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom Site CSS -->
-    <link rel="stylesheet" href="/css/site.css?v=sYQMyWPoGxHko4SKSE2M6L6KDpTRG8EgxznB8csKNCI" />
+    <link rel="stylesheet" href="./css/site.css" />
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -23,7 +23,7 @@
         <div class="container-fluid px-lg-5">
             <nav class="navbar navbar-expand-lg py-0">
                 <!-- 1. Logo (Left) -->
-                <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="/Student">
+                <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="./index.html">
                     <div class="brand-icon-box">
                         <i class="bi bi-mortarboard-fill"></i>
                     </div>
@@ -48,22 +48,22 @@
 
                         <ul class="nav custom-slide-nav" id="mainSlideNav">
                             <li class="nav-item">
-                                <a class="nav-link " href="/Student">
+                                <a class="nav-link " href="./index.html">
                                     <i class="bi bi-house-door-fill me-1"></i>Trang chủ
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="/Student/Home/Exams">
+                                <a class="nav-link " href="./exams.html">
                                     <i class="bi bi-journal-text me-1"></i>Đề thi
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="/Student/Home/Vocab">
+                                <a class="nav-link " href="./vocab.html">
                                     <i class="bi bi-translate me-1"></i>Từ vựng
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="/Student/Home/Grammar">
+                                <a class="nav-link " href="./grammar.html">
                                     <i class="bi bi-journal-code me-1"></i>Ngữ pháp
                                 </a>
                             </li>
@@ -102,7 +102,7 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a class="text-decoration-none text-success" href="/Student/Home/Vocab">Từ vựng
+                                <a class="text-decoration-none text-success" href="./vocab.html">Từ vựng
                                     TOEIC</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">T&#xE0;i Ch&#xED;nh &amp; Doanh Thu
@@ -117,7 +117,7 @@
                             class="d-flex flex-wrap justify-content-between align-items-center gap-2 vocab-detail-header-row">
                             <!-- Bên trái: Nút Quay lại -->
                             <a class="btn btn-outline-success rounded-pill px-3 py-2 fw-semibold btn-sm z-1 flex-shrink-0"
-                                href="/Student/Home/Vocab">
+                                href="./vocab.html">
                                 <i class="bi bi-arrow-left me-1"></i>Quay lại
                             </a>
 
@@ -569,283 +569,384 @@
 
         <!-- ================= 4. JAVASCRIPT LOGIC CHO BÀI HỌC TỪ VỰNG ================= -->
         <script>
-            // Dữ liệu từ vựng truyền từ Server sang Client
-            const vocabData = [{ "Id": 201, "TopicId": 2, "Word": "Revenue", "Phonetic": "/\u02C8rev\u0259nu\u02D0/", "Meaning": "Doanh thu, t\u1ED5ng thu nh\u1EADp", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "Company revenue increased by 15% in the fourth quarter.", "ImageUrl": "" }, { "Id": 202, "TopicId": 2, "Word": "Budget", "Phonetic": "/\u02C8b\u028Cd\u0292\u026At/", "Meaning": "Ng\u00E2n s\u00E1ch t\u00E0i ch\u00EDnh", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "The marketing department was allocated a budget of $50,000.", "ImageUrl": "" }, { "Id": 203, "TopicId": 2, "Word": "Expenditure", "Phonetic": "/\u026Ak\u02C8spend\u026At\u0283\u0259r/", "Meaning": "Chi ph\u00ED, s\u1EF1 chi ti\u00EAu", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "We must reduce capital expenditure to maintain cash reserves.", "ImageUrl": "" }, { "Id": 204, "TopicId": 2, "Word": "Audit", "Phonetic": "/\u02C8\u0254\u02D0d\u026At/", "Meaning": "Ki\u1EC3m to\u00E1n, s\u1EF1 ki\u1EC3m tra s\u1ED5 s\u00E1ch", "PartOfSpeech": "noun / verb", "Topic": "Finance", "Example": "An independent firm was hired to conduct an annual financial audit.", "ImageUrl": "" }, { "Id": 205, "TopicId": 2, "Word": "Dividend", "Phonetic": "/\u02C8d\u026Av\u026Adend/", "Meaning": "C\u1ED5 t\u1EE9c", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "Shareholders will receive a dividend of 50 cents per share.", "ImageUrl": "" }, { "Id": 206, "TopicId": 2, "Word": "Fiscal", "Phonetic": "/\u02C8f\u026Askl/", "Meaning": "Thu\u1ED9c t\u00E0i ch\u00EDnh, n\u0103m t\u00E0i kh\u00F3a", "PartOfSpeech": "adjective", "Topic": "Finance", "Example": "The new fiscal year will begin on January 1st.", "ImageUrl": "" }];
-            let currentIndex = 0;
-            let quizScore = 0;
-            const learnedStatus = {}; // Lưu trạng thái từ: { [wordId]: true/false }
+    // Kho dữ liệu 6 chủ đề TOEIC
+    const allTopicsData = {
+        1: {
+            title: "Hợp Đồng & Đàm Phán (Contracts)",
+            words: [
+                { Id: 101, Word: "Agreement", Phonetic: "/əˈɡriːmənt/", Meaning: "Hợp đồng, sự thỏa thuận", PartOfSpeech: "noun", Example: "The two companies reached an agreement.", ImageUrl: "" },
+                { Id: 102, Word: "Contract", Phonetic: "/ˈkɒntrækt/", Meaning: "Hợp đồng, giao kèo kinh tế", PartOfSpeech: "noun", Example: "They signed a three-year contract.", ImageUrl: "" },
+                { Id: 103, Word: "Negotiate", Phonetic: "/nɪˈɡəʊʃieɪt/", Meaning: "Đàm phán, thương lượng", PartOfSpeech: "verb", Example: "We need to negotiate the terms of payment.", ImageUrl: "" },
+                { Id: 104, Word: "Commitment", Phonetic: "/kəˈmɪtmənt/", Meaning: "Sự cam kết, tận tụy", PartOfSpeech: "noun", Example: "The company demonstrated its commitment to quality.", ImageUrl: "" },
+                { Id: 105, Word: "Obligation", Phonetic: "/ˌɒblɪˈɡeɪʃn/", Meaning: "Nghĩa vụ, bổn phận", PartOfSpeech: "noun", Example: "Both parties have legal obligations.", ImageUrl: "" },
+                { Id: 106, Word: "Assurance", Phonetic: "/əˈʃʊərəns/", Meaning: "Sự bảo đảm, chắc chắn", PartOfSpeech: "noun", Example: "He gave an assurance that the work would be completed on time.", ImageUrl: "" }
+            ]
+        },
+        2: {
+            title: "Tài Chính & Doanh Thu (Finance)",
+            words: [
+                { Id: 201, Word: "Revenue", Phonetic: "/ˈrevənuː/", Meaning: "Doanh thu, tổng thu nhập", PartOfSpeech: "noun", Example: "Company revenue increased by 15% in the fourth quarter.", ImageUrl: "" },
+                { Id: 202, Word: "Budget", Phonetic: "/ˈbʌdʒɪt/", Meaning: "Ngân sách tài chính", PartOfSpeech: "noun", Example: "The marketing department was allocated a budget of $50,000.", ImageUrl: "" },
+                { Id: 203, Word: "Expenditure", Phonetic: "/ɪkˈspendɪtʃər/", Meaning: "Chi phí, sự chi tiêu", PartOfSpeech: "noun", Example: "We must reduce capital expenditure to maintain cash reserves.", ImageUrl: "" },
+                { Id: 204, Word: "Audit", Phonetic: "/ˈɔːdɪt/", Meaning: "Kiểm toán, sự kiểm tra sổ sách", PartOfSpeech: "noun / verb", Example: "An independent firm was hired to conduct an annual financial audit.", ImageUrl: "" },
+                { Id: 205, Word: "Dividend", Phonetic: "/ˈdɪvɪdend/", Meaning: "Cổ tức", PartOfSpeech: "noun", Example: "Shareholders will receive a dividend of 50 cents per share.", ImageUrl: "" },
+                { Id: 206, Word: "Fiscal", Phonetic: "/ˈfɪskl/", Meaning: "Thuộc tài chính, năm tài khóa", PartOfSpeech: "adjective", Example: "The new fiscal year will begin on January 1st.", ImageUrl: "" }
+            ]
+        },
+        3: {
+            title: "Quản Trị Văn Phòng (General Business)",
+            words: [
+                { Id: 301, Word: "Colleague", Phonetic: "/ˈkɒliːɡ/", Meaning: "Đồng nghiệp", PartOfSpeech: "noun", Example: "She discussed the proposal with her colleagues.", ImageUrl: "" },
+                { Id: 302, Word: "Schedule", Phonetic: "/ˈskedʒuːl/", Meaning: "Lịch trình, kế hoạch làm việc", PartOfSpeech: "noun", Example: "The meeting is on schedule for tomorrow morning.", ImageUrl: "" },
+                { Id: 303, Word: "Collaborate", Phonetic: "/kəˈlæbəreɪt/", Meaning: "Hợp tác, phối hợp làm việc", PartOfSpeech: "verb", Example: "Teams collaborate closely to achieve shared targets.", ImageUrl: "" },
+                { Id: 304, Word: "Supervise", Phonetic: "/ˈsuːpəvaɪz/", Meaning: "Giám sát, quản lý", PartOfSpeech: "verb", Example: "The manager will supervise the project rollout.", ImageUrl: "" },
+                { Id: 305, Word: "Deadline", Phonetic: "/ˈdedlaɪn/", Meaning: "Hạn chót, thời hạn hoàn thành", PartOfSpeech: "noun", Example: "We worked overtime to meet the project deadline.", ImageUrl: "" },
+                { Id: 306, Word: "Productivity", Phonetic: "/ˌprɒdʌkˈtɪvəti/", Meaning: "Năng suất lao động", PartOfSpeech: "noun", Example: "Flexible hours improved worker productivity.", ImageUrl: "" }
+            ]
+        },
+        4: {
+            title: "Tuyển Dụng & Nhân Sự (Personnel)",
+            words: [
+                { Id: 401, Word: "Candidate", Phonetic: "/ˈkændɪdət/", Meaning: "Ứng viên ứng tuyển", PartOfSpeech: "noun", Example: "The hiring panel interviewed five promising candidates.", ImageUrl: "" },
+                { Id: 402, Word: "Resume", Phonetic: "/ˈrezjuːmeɪ/", Meaning: "Sơ yếu lý lịch, CV", PartOfSpeech: "noun", Example: "Please send your resume to our HR department.", ImageUrl: "" },
+                { Id: 403, Word: "Recruit", Phonetic: "/rɪˈkruːt/", Meaning: "Tuyển dụng nhân sự", PartOfSpeech: "verb", Example: "The firm plans to recruit 50 new developers.", ImageUrl: "" },
+                { Id: 404, Word: "Promotion", Phonetic: "/prəˈməʊʃn/", Meaning: "Sự thăng chức, đề bạt", PartOfSpeech: "noun", Example: "He earned a promotion to senior team lead.", ImageUrl: "" },
+                { Id: 405, Word: "Benefit", Phonetic: "/ˈbenɪfɪt/", Meaning: "Phúc lợi nhân viên", PartOfSpeech: "noun", Example: "The job offer includes health insurance and travel benefits.", ImageUrl: "" },
+                { Id: 406, Word: "Qualified", Phonetic: "/ˈkwɒlɪfaɪd/", Meaning: "Đủ tiêu chuẩn, có năng lực", PartOfSpeech: "adjective", Example: "She is highly qualified for the director position.", ImageUrl: "" }
+            ]
+        },
+        5: {
+            title: "Du Lịch & Đặt Phòng (Travel & Hotel)",
+            words: [
+                { Id: 501, Word: "Itinerary", Phonetic: "/aɪˈtɪnərəri/", Meaning: "Lịch trình chuyến đi", PartOfSpeech: "noun", Example: "The travel agent finalized our flight and hotel itinerary.", ImageUrl: "" },
+                { Id: 502, Word: "Reservation", Phonetic: "/ˌrezəˈveɪʃn/", Meaning: "Sự đặt chỗ trước", PartOfSpeech: "noun", Example: "We made a dinner reservation for seven o'clock.", ImageUrl: "" },
+                { Id: 503, Word: "Departure", Phonetic: "/dɪˈpɑːtʃər/", Meaning: "Sự khởi hành, chuyến bay đi", PartOfSpeech: "noun", Example: "Flight departures are displayed on the main monitor.", ImageUrl: "" },
+                { Id: 504, Word: "Accommodation", Phonetic: "/əˌkɒməˈdeɪʃn/", Meaning: "Chỗ ở, phòng nghỉ", PartOfSpeech: "noun", Example: "The conference fee includes luxury hotel accommodation.", ImageUrl: "" },
+                { Id: 505, Word: "Boarding", Phonetic: "/ˈbɔːdɪŋ/", Meaning: "Việc lên máy bay / tàu", PartOfSpeech: "noun", Example: "Passengers are requested to proceed to boarding gate 12.", ImageUrl: "" },
+                { Id: 506, Word: "Luggage", Phonetic: "/ˈlʌɡɪdʒ/", Meaning: "Hành lý", PartOfSpeech: "noun", Example: "Check-in baggage must not exceed 23 kilograms.", ImageUrl: "" }
+            ]
+        },
+        6: {
+            title: "Mua Sắm & Hậu Cần (Shopping & Shipping)",
+            words: [
+                { Id: 601, Word: "Merchandise", Phonetic: "/ˈmɜːtʃəndaɪs/", Meaning: "Hàng hóa thương mại", PartOfSpeech: "noun", Example: "New merchandise arrived at the retail store today.", ImageUrl: "" },
+                { Id: 602, Word: "Inventory", Phonetic: "/ˈɪnvəntri/", Meaning: "Hàng tồn kho, bản kiểm kê", PartOfSpeech: "noun", Example: "The warehouse conducts an inventory check every month.", ImageUrl: "" },
+                { Id: 603, Word: "Dispatch", Phonetic: "/dɪˈspætʃ/", Meaning: "Gửi đi, xuất kho vận chuyển", PartOfSpeech: "verb", Example: "Your package will be dispatched within 24 hours.", ImageUrl: "" },
+                { Id: 604, Word: "Invoice", Phonetic: "/ˈɪnvɔɪs/", Meaning: "Hóa đơn thanh toán", PartOfSpeech: "noun", Example: "Payment must be received within 30 days of the invoice date.", ImageUrl: "" },
+                { Id: 605, Word: "Courier", Phonetic: "/ˈkʊriər/", Meaning: "Dịch vụ chuyển phát nhanh", PartOfSpeech: "noun", Example: "The documents were delivered by a courier service.", ImageUrl: "" },
+                { Id: 606, Word: "Refund", Phonetic: "/ˈriːfʌnd/", Meaning: "Khoản tiền hoàn trả, hoàn tiền", PartOfSpeech: "noun / verb", Example: "Customers can request a full refund within 14 days.", ImageUrl: "" }
+            ]
+        }
+    };
 
-            function updateFlashcardUI() {
-                if (!vocabData || vocabData.length === 0) return;
+    // Đọc ?id= từ URL (mặc định là 1 nếu không truyền)
+    const urlParams = new URLSearchParams(window.location.search);
+    const topicId = parseInt(urlParams.get('id')) || 1;
+    const selectedTopic = allTopicsData[topicId] || allTopicsData[1];
+    const vocabData = selectedTopic.words;
 
-                const currentWord = vocabData[currentIndex];
+    let currentIndex = 0;
+    let quizScore = 0;
+    const learnedStatus = {};
 
-                // Cập nhật text mặt trước (Word, Phonetic, POS, và Ví dụ)
-                document.getElementById('fcWord').innerText = currentWord.Word;
-                document.getElementById('fcPhonetic').innerText = currentWord.Phonetic;
-                document.getElementById('fcPartOfSpeech').innerText = currentWord.PartOfSpeech;
-                document.getElementById('fcExample').innerText = `"${currentWord.Example}"`;
+    // Cập nhật tiêu đề trang
+    document.title = "Học Từ Vựng: " + selectedTopic.title + " - TOEIC Master";
+    const headerTitleEl = document.querySelector(".vocab-header-title-box h4");
+    if (headerTitleEl) {
+        headerTitleEl.innerText = selectedTopic.title;
+        headerTitleEl.title = selectedTopic.title;
+    }
+    const breadcrumbActiveEl = document.querySelector(".breadcrumb-item.active");
+    if (breadcrumbActiveEl) breadcrumbActiveEl.innerText = selectedTopic.title;
 
-                // Cập nhật hình ảnh minh họa ở MẶT TRƯỚC
-                const imgTagFront = document.getElementById('fcImageTagFront');
-                const imgPlaceholderFront = document.getElementById('fcImagePlaceholderFront');
-                if (imgTagFront && imgPlaceholderFront) {
-                    if (currentWord.ImageUrl && currentWord.ImageUrl.trim() !== "") {
-                        imgTagFront.src = currentWord.ImageUrl;
-                        imgTagFront.style.display = 'block';
-                        imgPlaceholderFront.style.display = 'none';
-                    } else {
-                        imgTagFront.style.display = 'none';
-                        imgPlaceholderFront.style.display = 'block';
-                    }
-                }
+    function renderVocabListTab() {
+        const grid = document.getElementById('vocabCardsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        vocabData.forEach(w => {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4 vocab-item-wrapper';
+            col.id = 'wordCardCol-' + w.Id;
+            col.setAttribute('data-word-id', w.Id);
+            col.innerHTML = `
+                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                        <div>
+                            <h5 class="fw-bold text-dark mb-0">${w.Word}</h5>
+                            <span class="text-muted small">${w.Phonetic}</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                            <div id="wordStatusBadge-${w.Id}">
+                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                            </div>
+                            <button class="btn btn-sm btn-light rounded-circle shadow-xs" onclick="speakWord('${w.Word}')" title="Nghe phát âm">
+                                <i class="bi bi-volume-up text-success"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                        <span class="badge bg-light-green text-emerald border small me-1">${w.PartOfSpeech}</span>
+                        <strong class="text-success small">${w.Meaning}</strong>
+                    </div>
+                    <div class="text-muted x-small fst-italic mt-auto">
+                        <i class="bi bi-chat-quote me-1"></i>${w.Example}
+                    </div>
+                </div>
+            `;
+            grid.appendChild(col);
+        });
 
-                // Cập nhật text mặt sau (Nghĩa tiếng Việt)
-                document.getElementById('fcMeaning').innerText = currentWord.Meaning;
+        const countAll = document.getElementById('countAll');
+        if (countAll) countAll.innerText = vocabData.length;
+        const listTabBtn = document.getElementById('list-tab');
+        if (listTabBtn) listTabBtn.innerHTML = `<i class="bi bi-list-ul me-1"></i>Danh sách từ (${vocabData.length})`;
+    }
 
-                // Cập nhật hình ảnh minh họa ở MẶT SAU
-                const imgTagBack = document.getElementById('fcImageTagBack');
-                const imgPlaceholderBack = document.getElementById('fcImagePlaceholderBack');
-                if (imgTagBack && imgPlaceholderBack) {
-                    if (currentWord.ImageUrl && currentWord.ImageUrl.trim() !== "") {
-                        imgTagBack.src = currentWord.ImageUrl;
-                        imgTagBack.style.display = 'block';
-                        imgPlaceholderBack.style.display = 'none';
-                    } else {
-                        imgTagBack.style.display = 'none';
-                        imgPlaceholderBack.style.display = 'block';
-                    }
-                }
+    function updateFlashcardUI() {
+        if (!vocabData || vocabData.length === 0) return;
+        const currentWord = vocabData[currentIndex];
 
-                // Cập nhật giao diện trạng thái Thuộc / Chưa thuộc hiện tại (khóa nút nếu đã chọn)
-                updateStatusButtonsUI(currentWord.Id);
+        document.getElementById('fcWord').innerText = currentWord.Word;
+        document.getElementById('fcPhonetic').innerText = currentWord.Phonetic;
+        document.getElementById('fcPartOfSpeech').innerText = currentWord.PartOfSpeech;
+        document.getElementById('fcExample').innerText = '"' + currentWord.Example + '"';
 
-                // Cập nhật chỉ số & thanh tiến độ
-                document.getElementById('cardCurrentIndex').innerText = currentIndex + 1;
-                const progressPercent = ((currentIndex + 1) / vocabData.length) * 100;
-                document.getElementById('cardProgressBar').style.width = `${progressPercent}%`;
-
-                // Trạng thái nút Next / Prev
-                document.getElementById('btnPrevCard').disabled = (currentIndex === 0);
-                document.getElementById('btnNextCard').disabled = (currentIndex === vocabData.length - 1);
-
-                // Đảm bảo thẻ quay về mặt trước khi chuyển từ mới
-                document.getElementById('mainFlashcard').classList.remove('is-flipped');
+        const imgTagFront = document.getElementById('fcImageTagFront');
+        const imgPlaceholderFront = document.getElementById('fcImagePlaceholderFront');
+        if (imgTagFront && imgPlaceholderFront) {
+            if (currentWord.ImageUrl && currentWord.ImageUrl.trim() !== "") {
+                imgTagFront.src = currentWord.ImageUrl;
+                imgTagFront.style.display = 'block';
+                imgPlaceholderFront.style.display = 'none';
+            } else {
+                imgTagFront.style.display = 'none';
+                imgPlaceholderFront.style.display = 'block';
             }
+        }
 
-            // Đánh dấu trạng thái Thuộc (true) hoặc Chưa thuộc (false)
-            // Quy tắc: Chỉ được chọn 1 trong 2, khi đã chọn thì không thể ấn đổi ngược lại cho từ này
-            function markStatus(isLearned) {
-                if (!vocabData || vocabData.length === 0) return;
-                const currentWord = vocabData[currentIndex];
+        document.getElementById('fcMeaning').innerText = currentWord.Meaning;
 
-                // Nếu từ này ĐÃ ĐƯỢC CHỌN TRƯỚC ĐÓ rồi thì KHÔNG cho đổi
-                if (learnedStatus[currentWord.Id] !== undefined) {
-                    return;
-                }
-
-                learnedStatus[currentWord.Id] = isLearned;
-                updateStatusButtonsUI(currentWord.Id);
-                updateVocabListClassification();
-
-                // Tự động chuyển sang từ tiếp theo nếu chưa ở cuối
-                if (currentIndex < vocabData.length - 1) {
-                    setTimeout(() => {
-                        nextCard();
-                    }, 350);
-                }
+        const imgTagBack = document.getElementById('fcImageTagBack');
+        const imgPlaceholderBack = document.getElementById('fcImagePlaceholderBack');
+        if (imgTagBack && imgPlaceholderBack) {
+            if (currentWord.ImageUrl && currentWord.ImageUrl.trim() !== "") {
+                imgTagBack.src = currentWord.ImageUrl;
+                imgTagBack.style.display = 'block';
+                imgPlaceholderBack.style.display = 'none';
+            } else {
+                imgTagBack.style.display = 'none';
+                imgPlaceholderBack.style.display = 'block';
             }
+        }
 
-            function updateStatusButtonsUI(wordId) {
-                const btnLearned = document.getElementById('btnLearned');
-                const btnNotLearned = document.getElementById('btnNotLearned');
-                if (!btnLearned || !btnNotLearned) return;
+        updateStatusButtonsUI(currentWord.Id);
 
-                const status = learnedStatus[wordId];
-                if (status === true) {
-                    // Đã chọn Thuộc -> Khóa cả 2 nút, nút Chưa thuộc bị disabled hoàn toàn
-                    btnLearned.className = 'btn btn-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-sm';
-                    btnLearned.disabled = true;
-                    btnLearned.style.cursor = 'default';
+        document.getElementById('cardCurrentIndex').innerText = currentIndex + 1;
+        const progressPercent = ((currentIndex + 1) / vocabData.length) * 100;
+        document.getElementById('cardProgressBar').style.width = `${progressPercent}%`;
 
-                    btnNotLearned.className = 'btn btn-outline-secondary px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 opacity-50';
-                    btnNotLearned.disabled = true;
-                    btnNotLearned.style.cursor = 'not-allowed';
-                } else if (status === false) {
-                    // Đã chọn Chưa thuộc -> Khóa cả 2 nút, nút Thuộc bị disabled hoàn toàn
-                    btnNotLearned.className = 'btn btn-danger text-white px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-sm';
-                    btnNotLearned.disabled = true;
-                    btnNotLearned.style.cursor = 'default';
+        document.getElementById('btnPrevCard').disabled = (currentIndex === 0);
+        document.getElementById('btnNextCard').disabled = (currentIndex === vocabData.length - 1);
 
-                    btnLearned.className = 'btn btn-outline-secondary px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 opacity-50';
-                    btnLearned.disabled = true;
-                    btnLearned.style.cursor = 'not-allowed';
-                } else {
-                    // Chưa chọn: Cả 2 nút sẵn sàng cho người dùng bấm 1 trong 2
-                    btnLearned.className = 'btn btn-outline-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs';
-                    btnLearned.disabled = false;
-                    btnLearned.style.cursor = 'pointer';
+        document.getElementById('mainFlashcard').classList.remove('is-flipped');
+    }
 
-                    btnNotLearned.className = 'btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs';
-                    btnNotLearned.disabled = false;
-                    btnNotLearned.style.cursor = 'pointer';
+    function markStatus(isLearned) {
+        if (!vocabData || vocabData.length === 0) return;
+        const currentWord = vocabData[currentIndex];
+        if (learnedStatus[currentWord.Id] !== undefined) return;
+
+        learnedStatus[currentWord.Id] = isLearned;
+        updateStatusButtonsUI(currentWord.Id);
+        updateVocabListClassification();
+
+        if (currentIndex < vocabData.length - 1) {
+            setTimeout(() => { nextCard(); }, 350);
+        }
+    }
+
+    function updateStatusButtonsUI(wordId) {
+        const btnLearned = document.getElementById('btnLearned');
+        const btnNotLearned = document.getElementById('btnNotLearned');
+        if (!btnLearned || !btnNotLearned) return;
+
+        const status = learnedStatus[wordId];
+        if (status === true) {
+            btnLearned.className = 'btn btn-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-sm';
+            btnLearned.disabled = true;
+            btnLearned.style.cursor = 'default';
+
+            btnNotLearned.className = 'btn btn-outline-secondary px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 opacity-50';
+            btnNotLearned.disabled = true;
+            btnNotLearned.style.cursor = 'not-allowed';
+        } else if (status === false) {
+            btnNotLearned.className = 'btn btn-danger text-white px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-sm';
+            btnNotLearned.disabled = true;
+            btnNotLearned.style.cursor = 'default';
+
+            btnLearned.className = 'btn btn-outline-secondary px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 opacity-50';
+            btnLearned.disabled = true;
+            btnLearned.style.cursor = 'not-allowed';
+        } else {
+            btnLearned.className = 'btn btn-outline-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs';
+            btnLearned.disabled = false;
+            btnLearned.style.cursor = 'pointer';
+
+            btnNotLearned.className = 'btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs';
+            btnNotLearned.disabled = false;
+            btnNotLearned.style.cursor = 'pointer';
+        }
+    }
+
+    let currentFilter = 'all';
+
+    function updateVocabListClassification() {
+        let countLearned = 0;
+        let countNotLearned = 0;
+
+        vocabData.forEach(w => {
+            const status = learnedStatus[w.Id];
+            const badge = document.getElementById(`wordStatusBadge-${w.Id}`);
+            if (status === true) {
+                countLearned++;
+                if (badge) {
+                    badge.innerHTML = '<span class="badge bg-success-subtle text-success border border-success border-opacity-25 fw-semibold small"><i class="bi bi-check-circle-fill me-1"></i>Đã thuộc</span>';
                 }
-            }
-
-            // ================= PHÂN LOẠI & LỌC TỪ TRONG DANH SÁCH =================
-            let currentFilter = 'all';
-
-            function updateVocabListClassification() {
-                let countLearned = 0;
-                let countNotLearned = 0;
-
-                vocabData.forEach(w => {
-                    const status = learnedStatus[w.Id];
-                    const badge = document.getElementById(`wordStatusBadge-${w.Id}`);
-                    if (status === true) {
-                        countLearned++;
-                        if (badge) {
-                            badge.innerHTML = '<span class="badge bg-success-subtle text-success border border-success border-opacity-25 fw-semibold small"><i class="bi bi-check-circle-fill me-1"></i>Đã thuộc</span>';
-                        }
-                    } else if (status === false) {
-                        countNotLearned++;
-                        if (badge) {
-                            badge.innerHTML = '<span class="badge bg-danger-subtle text-danger border border-danger border-opacity-25 fw-semibold small"><i class="bi bi-x-circle-fill me-1"></i>Chưa thuộc</span>';
-                        }
-                    }
-                });
-
-                const countLearnedEl = document.getElementById('countLearned');
-                const countNotLearnedEl = document.getElementById('countNotLearned');
-                if (countLearnedEl) countLearnedEl.innerText = countLearned;
-                if (countNotLearnedEl) countNotLearnedEl.innerText = countNotLearned;
-
-                // Cập nhật lại chế độ lọc hiện tại
-                filterWordList(currentFilter);
-            }
-
-            function filterWordList(filterType) {
-                currentFilter = filterType;
-
-                // Đổi trạng thái active cho nút bấm lọc
-                const btnAll = document.getElementById('filterBtnAll');
-                const btnLearned = document.getElementById('filterBtnLearned');
-                const btnNot = document.getElementById('filterBtnNotLearned');
-
-                if (btnAll && btnLearned && btnNot) {
-                    btnAll.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'all' ? 'active btn-success text-white' : 'btn-light text-secondary');
-                    btnLearned.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'learned' ? 'active btn-success text-white' : 'btn-light text-success');
-                    btnNot.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'not_learned' ? 'active btn-danger text-white' : 'btn-light text-danger');
-                }
-
-                let visibleCount = 0;
-                const allItemWrappers = document.querySelectorAll('.vocab-item-wrapper');
-                allItemWrappers.forEach(item => {
-                    const wordId = parseInt(item.getAttribute('data-word-id'));
-                    const status = learnedStatus[wordId];
-
-                    let isVisible = false;
-                    if (filterType === 'all') {
-                        isVisible = true;
-                    } else if (filterType === 'learned') {
-                        isVisible = (status === true);
-                    } else if (filterType === 'not_learned') {
-                        isVisible = (status === false);
-                    }
-
-                    if (isVisible) {
-                        item.classList.remove('d-none');
-                        visibleCount++;
-                    } else {
-                        item.classList.add('d-none');
-                    }
-                });
-
-                // Hiển thị thông báo nếu không có từ nào theo bộ lọc
-                const emptyMsg = document.getElementById('vocabEmptyFilterMsg');
-                if (emptyMsg) {
-                    if (visibleCount === 0) {
-                        emptyMsg.classList.remove('d-none');
-                    } else {
-                        emptyMsg.classList.add('d-none');
-                    }
+            } else if (status === false) {
+                countNotLearned++;
+                if (badge) {
+                    badge.innerHTML = '<span class="badge bg-danger-subtle text-danger border border-danger border-opacity-25 fw-semibold small"><i class="bi bi-x-circle-fill me-1"></i>Chưa thuộc</span>';
                 }
             }
+        });
 
-            function flipCurrentCard() {
-                document.getElementById('mainFlashcard').classList.toggle('is-flipped');
+        const countLearnedEl = document.getElementById('countLearned');
+        const countNotLearnedEl = document.getElementById('countNotLearned');
+        if (countLearnedEl) countLearnedEl.innerText = countLearned;
+        if (countNotLearnedEl) countNotLearnedEl.innerText = countNotLearned;
+
+        filterWordList(currentFilter);
+    }
+
+    function filterWordList(filterType) {
+        currentFilter = filterType;
+        const btnAll = document.getElementById('filterBtnAll');
+        const btnLearned = document.getElementById('filterBtnLearned');
+        const btnNot = document.getElementById('filterBtnNotLearned');
+
+        if (btnAll && btnLearned && btnNot) {
+            btnAll.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'all' ? 'active btn-success text-white' : 'btn-light text-secondary');
+            btnLearned.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'learned' ? 'active btn-success text-white' : 'btn-light text-success');
+            btnNot.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'not_learned' ? 'active btn-danger text-white' : 'btn-light text-danger');
+        }
+
+        let visibleCount = 0;
+        const allItemWrappers = document.querySelectorAll('.vocab-item-wrapper');
+        allItemWrappers.forEach(item => {
+            const wordId = parseInt(item.getAttribute('data-word-id'));
+            const status = learnedStatus[wordId];
+
+            let isVisible = false;
+            if (filterType === 'all') isVisible = true;
+            else if (filterType === 'learned') isVisible = (status === true);
+            else if (filterType === 'not_learned') isVisible = (status === false);
+
+            if (isVisible) {
+                item.classList.remove('d-none');
+                visibleCount++;
+            } else {
+                item.classList.add('d-none');
             }
+        });
 
-            function nextCard() {
-                if (currentIndex < vocabData.length - 1) {
-                    currentIndex++;
-                    updateFlashcardUI();
-                }
-            }
+        const emptyMsg = document.getElementById('vocabEmptyFilterMsg');
+        if (emptyMsg) {
+            if (visibleCount === 0) emptyMsg.classList.remove('d-none');
+            else emptyMsg.classList.add('d-none');
+        }
+    }
 
-            function prevCard() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateFlashcardUI();
-                }
-            }
+    function flipCurrentCard() {
+        document.getElementById('mainFlashcard').classList.toggle('is-flipped');
+    }
 
-            function playCurrentWordAudio() {
-                if (vocabData && vocabData.length > 0) {
-                    speakWord(vocabData[currentIndex].Word);
-                }
-            }
+    function nextCard() {
+        if (currentIndex < vocabData.length - 1) {
+            currentIndex++;
+            updateFlashcardUI();
+        }
+    }
 
-            // ================= MINI QUIZ GENERATOR =================
-            function generateNextQuiz() {
-                if (!vocabData || vocabData.length === 0) return;
+    function prevCard() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateFlashcardUI();
+        }
+    }
 
-                const randomWordIndex = Math.floor(Math.random() * vocabData.length);
-                const correctWord = vocabData[randomWordIndex];
-                document.getElementById('quizQuestionWord').innerText = correctWord.Word;
+    function playCurrentWordAudio() {
+        if (vocabData && vocabData.length > 0) {
+            speakWord(vocabData[currentIndex].Word);
+        }
+    }
 
-                // Lấy 3 đáp án sai ngẫu nhiên
-                const distractors = vocabData.filter(w => w.Id !== correctWord.Id);
-                const shuffledDistractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 3);
+    function speakWord(text) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
 
-                const allOptions = [correctWord, ...shuffledDistractors].sort(() => 0.5 - Math.random());
+    function generateNextQuiz() {
+        if (!vocabData || vocabData.length === 0) return;
 
-                const container = document.getElementById('quizOptionsContainer');
-                container.innerHTML = '';
+        const randomWordIndex = Math.floor(Math.random() * vocabData.length);
+        const correctWord = vocabData[randomWordIndex];
+        document.getElementById('quizQuestionWord').innerText = correctWord.Word;
 
-                allOptions.forEach((opt, idx) => {
-                    const isCorrect = (opt.Id === correctWord.Id);
-                    const col = document.createElement('div');
-                    col.className = 'col-md-6';
-                    col.innerHTML = `
+        const distractors = vocabData.filter(w => w.Id !== correctWord.Id);
+        const shuffledDistractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 3);
+        const allOptions = [correctWord, ...shuffledDistractors].sort(() => 0.5 - Math.random());
+
+        const container = document.getElementById('quizOptionsContainer');
+        container.innerHTML = '';
+
+        allOptions.forEach((opt, idx) => {
+            const isCorrect = (opt.Id === correctWord.Id);
+            const col = document.createElement('div');
+            col.className = 'col-md-6';
+            col.innerHTML = `
                 <button class="btn btn-outline-secondary w-100 p-3 rounded-3 text-start fw-semibold quiz-opt-btn" onclick="checkQuizAnswer(this, ${isCorrect})">
                     <span class="badge bg-light text-dark border me-2">${String.fromCharCode(65 + idx)}</span>${opt.Meaning}
                 </button>
             `;
-                    container.appendChild(col);
-                });
-            }
+            container.appendChild(col);
+        });
+    }
 
-            function checkQuizAnswer(button, isCorrect) {
-                const allButtons = document.querySelectorAll('.quiz-opt-btn');
-                allButtons.forEach(b => b.disabled = true);
+    function checkQuizAnswer(button, isCorrect) {
+        const allButtons = document.querySelectorAll('.quiz-opt-btn');
+        allButtons.forEach(b => b.disabled = true);
 
-                if (isCorrect) {
-                    button.classList.remove('btn-outline-secondary');
-                    button.classList.add('btn-success', 'text-white');
-                    quizScore += 10;
-                    document.getElementById('quizScoreText').innerText = `Điểm: ${quizScore} (+10đ)`;
-                } else {
-                    button.classList.remove('btn-outline-secondary');
-                    button.classList.add('btn-danger', 'text-white');
-                }
-            }
+        if (isCorrect) {
+            button.classList.remove('btn-outline-secondary');
+            button.classList.add('btn-success', 'text-white');
+            quizScore += 10;
+            document.getElementById('quizScoreText').innerText = `Điểm: ${quizScore} (+10đ)`;
+        } else {
+            button.classList.remove('btn-outline-secondary');
+            button.classList.add('btn-danger', 'text-white');
+        }
+    }
 
-            document.addEventListener('DOMContentLoaded', () => {
-                updateFlashcardUI();
-                generateNextQuiz();
-            });
-        </script>
+    document.addEventListener('DOMContentLoaded', () => {
+        renderVocabListTab();
+        updateFlashcardUI();
+        generateNextQuiz();
+    });
+</script>
 
     </main>
 
@@ -880,10 +981,10 @@
                     Thiết kế dành cho học viên ôn thi TOEIC.
                 </p>
                 <div class="d-flex gap-3 x-small">
-                    <a class="text-muted text-decoration-none hover-success" href="/Student/Home/Privacy">Điều khoản sử
+                    <a class="text-muted text-decoration-none hover-success" href="#">Điều khoản sử
                         dụng</a>
                     <span class="text-muted">•</span>
-                    <a class="text-muted text-decoration-none hover-success" href="/Student/Home/Privacy">Chính sách bảo
+                    <a class="text-muted text-decoration-none hover-success" href="#">Chính sách bảo
                         mật</a>
                 </div>
             </div>
@@ -1001,9 +1102,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/site.js?v=ufsgDTOp8vIPduqVtdxh_96oy_ruhr3uw6lLVOjxdRs"></script>
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
+    <script src="./lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/site.js"></script>
 
 </body>
 
