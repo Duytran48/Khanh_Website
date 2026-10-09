@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H&#x1ECD;c T&#x1EEB; V&#x1EF1;ng: T&#xE0;i Ch&#xED;nh &amp; Doanh Thu (Finance) - TOEIC Master</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 & Icons -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom Site CSS -->
+    <link rel="stylesheet" href="/css/site.css?v=sYQMyWPoGxHko4SKSE2M6L6KDpTRG8EgxznB8csKNCI" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-header sticky-top">
+        <div class="container-fluid px-lg-5">
+            <nav class="navbar navbar-expand-lg py-0">
+                <!-- 1. Logo (Left) -->
+                <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="/Student">
+                    <div class="brand-icon-box">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <span class="brand-title">TOEIC<span class="brand-highlight">GREEN</span></span>
+                        <span class="brand-sub">Mastery Learning</span>
+                    </div>
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarMain">
+                    <i class="bi bi-list fs-2 text-success"></i>
+                </button>
+
+                <!-- Navbar Content -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarMain">
+                    <!-- 2. Smooth Floating Background Slider Navbar (Center) -->
+                    <div class="navbar-slidebar-wrapper mx-auto my-2 my-lg-0" id="slidebarContainer">
+                        <!-- Floating Background Pill Indicator -->
+                        <div class="nav-slider-indicator" id="navIndicator"></div>
+
+                        <ul class="nav custom-slide-nav" id="mainSlideNav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/Student">
+                                    <i class="bi bi-house-door-fill me-1"></i>Trang chủ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/Student/Home/Exams">
+                                    <i class="bi bi-journal-text me-1"></i>Đề thi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/Student/Home/Vocab">
+                                    <i class="bi bi-translate me-1"></i>Từ vựng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/Student/Home/Grammar">
+                                    <i class="bi bi-journal-code me-1"></i>Ngữ pháp
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Auth Buttons (Right) -->
+                    <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                        <button class="btn btn-auth-login" data-bs-toggle="modal" data-bs-target="#authModal"
+                            onclick="setAuthMode('login')">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Đăng nhập
+                        </button>
+                        <button class="btn btn-auth-register shadow-sm" data-bs-toggle="modal"
+                            data-bs-target="#authModal" onclick="setAuthMode('register')">
+                            <i class="bi bi-person-plus-fill me-1"></i>Đăng ký
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================== BODY CONTENT ===================== -->
+    <main role="main" class="flex-grow-1">
+
+        <div class="page-container py-4">
+            <div class="container-fluid px-lg-5">
+
+                <!-- ================= 1. BREADCRUMB & HEADER ================= -->
+                <div class="mb-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-2">
+                            <li class="breadcrumb-item">
+                                <a class="text-decoration-none text-success" href="/Student">
+                                    <i class="bi bi-house-door me-1"></i>Trang chủ
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a class="text-decoration-none text-success" href="/Student/Home/Vocab">Từ vựng
+                                    TOEIC</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">T&#xE0;i Ch&#xED;nh &amp; Doanh Thu
+                                (Finance)</li>
+                        </ol>
+                    </nav>
+
+                    <!-- Header: Nút Quay lại bên trái, Tên chủ đề ở GIỮA (Responsive cho mọi màn hình) -->
+                    <div
+                        class="card border-0 rounded-4 shadow-sm p-3 bg-white border-start border-4 border-success position-relative">
+                        <div
+                            class="d-flex flex-wrap justify-content-between align-items-center gap-2 vocab-detail-header-row">
+                            <!-- Bên trái: Nút Quay lại -->
+                            <a class="btn btn-outline-success rounded-pill px-3 py-2 fw-semibold btn-sm z-1 flex-shrink-0"
+                                href="/Student/Home/Vocab">
+                                <i class="bi bi-arrow-left me-1"></i>Quay lại
+                            </a>
+
+                            <!-- Ở giữa: Tên chủ đề (tự căn giữa desktop & tablet, linh hoạt trên mobile) -->
+                            <div class="vocab-header-title-box d-flex align-items-center gap-2">
+                                <div class="topic-icon-box rounded-circle bg-light-green text-success d-flex align-items-center justify-content-center flex-shrink-0"
+                                    style="width: 36px; height: 36px;">
+                                    <i class="bi bi-cash-coin fs-5"></i>
+                                </div>
+                                <h4 class="fw-bold text-dark mb-0 fs-5 text-truncate"
+                                    title="T&#xE0;i Ch&#xED;nh &amp; Doanh Thu (Finance)">T&#xE0;i Ch&#xED;nh &amp;
+                                    Doanh Thu (Finance)</h4>
+                            </div>
+
+                            <!-- Placeholder để giữ cân bằng layout trên màn hình lớn -->
+                            <div style="width: 88px;" class="d-none d-md-block flex-shrink-0"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= 2. STUDY MODES (TABS) ================= -->
+                <ul class="nav nav-pills gap-1 gap-sm-2 mb-3 p-1 bg-white rounded-4 shadow-sm border justify-content-center flex-nowrap overflow-auto"
+                    id="vocabStudyTabs" role="tablist">
+                    <li class="nav-item flex-shrink-0" role="presentation">
+                        <button class="nav-link active rounded-pill fw-semibold px-3 px-sm-4 py-2 small"
+                            id="flashcard-tab" data-bs-toggle="pill" data-bs-target="#flashcard-pane" type="button"
+                            role="tab">
+                            <i class="bi bi-card-text me-1"></i>Thẻ Flashcard
+                        </button>
+                    </li>
+                    <li class="nav-item flex-shrink-0" role="presentation">
+                        <button class="nav-link rounded-pill fw-semibold px-3 px-sm-4 py-2 small" id="list-tab"
+                            data-bs-toggle="pill" data-bs-target="#list-pane" type="button" role="tab">
+                            <i class="bi bi-list-ul me-1"></i>Danh sách từ (6)
+                        </button>
+                    </li>
+                    <li class="nav-item flex-shrink-0" role="presentation">
+                        <button class="nav-link rounded-pill fw-semibold px-3 px-sm-4 py-2 small" id="quiz-tab"
+                            data-bs-toggle="pill" data-bs-target="#quiz-pane" type="button" role="tab">
+                            <i class="bi bi-patch-question me-1"></i>Trắc nghiệm
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- ================= 3. TAB CONTENT ================= -->
+                <div class="tab-content" id="vocabTabContent">
+
+                    <!-- TAB 1: COMPACT 3D FLASHCARD -->
+                    <div class="tab-pane fade show active" id="flashcard-pane" role="tabpanel">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-6 col-lg-7 col-md-9 col-12">
+
+                                <!-- Progress Indicator -->
+                                <div class="d-flex justify-content-between align-items-center mb-1 px-1">
+                                    <span class="text-muted x-small fw-semibold">
+                                        Từ số <strong class="text-success" id="cardCurrentIndex">1</strong> / 6
+                                    </span>
+                                </div>
+                                <div class="progress mb-3" style="height: 5px;">
+                                    <div class="progress-bar bg-success rounded-pill" id="cardProgressBar"
+                                        style="width: 16,666666666666668%"></div>
+                                </div>
+
+                                <!-- 3D Flip Card Container -->
+                                <div class="flashcard-scene mb-3" onclick="flipCurrentCard()">
+                                    <div class="flashcard" id="mainFlashcard">
+
+                                        <!-- Mặt trước (Front): Từ vựng + Hình ảnh ở GIỮA + Phiên âm + Ví dụ bên dưới -->
+                                        <div
+                                            class="flashcard-face flashcard-front rounded-4 shadow-sm p-3 p-sm-4 d-flex flex-column justify-content-between text-center bg-white border">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span
+                                                    class="badge bg-emerald-light text-emerald px-3 py-1 rounded-pill fw-semibold"
+                                                    id="fcPartOfSpeech">noun</span>
+                                                <button class="btn btn-light btn-sm rounded-circle shadow-xs"
+                                                    onclick="event.stopPropagation(); playCurrentWordAudio();"
+                                                    title="Nghe phát âm">
+                                                    <i class="bi bi-volume-up-fill text-success fs-5"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="my-auto py-2 d-flex flex-column align-items-center w-100">
+                                                <!-- 1. Từ vựng tiếng Anh -->
+                                                <h2 class="fw-extrabold text-dark mb-2 fc-word-heading" id="fcWord">
+                                                    Agreement</h2>
+
+                                                <!-- 2. Hình ảnh ở giữa (dưới từ vựng, trên phiên âm) -->
+                                                <div class="vocab-image-box shadow-xs mb-2" id="fcImageBoxFront">
+                                                    <i class="bi bi-image text-muted fs-3"
+                                                        id="fcImagePlaceholderFront"></i>
+                                                    <img id="fcImageTagFront" src="" alt="Vocabulary Illustration"
+                                                        style="display: none;" />
+                                                </div>
+
+                                                <!-- 3. Phiên âm -->
+                                                <p class="text-muted fs-6 mb-2" id="fcPhonetic">/əˈɡriːmənt/</p>
+
+                                                <!-- 4. Câu ví dụ đặt dưới phần phiên âm -->
+                                                <div
+                                                    class="p-2 px-3 bg-light rounded-3 border text-center d-inline-block mw-100">
+                                                    <p class="mb-0 text-secondary small fst-italic" id="fcExample">"The
+                                                        two companies reached a preliminary agreement on the merger."
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div></div>
+                                        </div>
+
+                                        <!-- Mặt sau (Back): Hình ảnh + Nghĩa tiếng Việt -->
+                                        <div
+                                            class="flashcard-face flashcard-back rounded-4 shadow-sm p-3 p-sm-4 d-flex flex-column justify-content-between text-center bg-white border">
+                                            <div class="d-flex justify-content-end align-items-center">
+                                                <button class="btn btn-light btn-sm rounded-circle shadow-xs"
+                                                    onclick="event.stopPropagation(); playCurrentWordAudio();"
+                                                    title="Nghe phát âm">
+                                                    <i class="bi bi-volume-up-fill text-success fs-5"></i>
+                                                </button>
+                                            </div>
+
+                                            <div
+                                                class="d-flex align-items-center justify-content-center gap-3 gap-sm-4 my-auto py-2 w-100 flex-column flex-sm-row">
+                                                <!-- Khung hình ảnh kèm theo ở mặt sau -->
+                                                <div class="vocab-image-box shadow-xs" id="fcImageBoxBack">
+                                                    <i class="bi bi-image text-muted fs-3"
+                                                        id="fcImagePlaceholderBack"></i>
+                                                    <img id="fcImageTagBack" src="" alt="Vocabulary Illustration"
+                                                        style="display: none;" />
+                                                </div>
+
+                                                <div class="text-center text-sm-start">
+                                                    <span
+                                                        class="text-muted x-small fw-bold text-uppercase d-block mb-1">Nghĩa
+                                                        tiếng Việt</span>
+                                                    <h3 class="fw-bold text-success mb-0 fc-meaning-heading"
+                                                        id="fcMeaning">Hợp đồng, thỏa thuận</h3>
+                                                </div>
+                                            </div>
+
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card Navigation Controls: Từ trước | Chưa thuộc | Thuộc | Từ tiếp theo -->
+                                <div
+                                    class="d-flex flex-wrap justify-content-between align-items-center gap-2 flashcard-controls-row">
+                                    <button
+                                        class="btn btn-outline-secondary px-3 py-2 rounded-pill fw-bold btn-sm fc-nav-btn"
+                                        id="btnPrevCard" onclick="prevCard()" disabled>
+                                        <i class="bi bi-arrow-left me-1"></i>Từ trước
+                                    </button>
+
+                                    <div class="d-flex align-items-center gap-2 fc-status-btn-group">
+                                        <button
+                                            class="btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs"
+                                            id="btnNotLearned" onclick="markStatus(false)" title="Chưa thuộc từ này">
+                                            <i class="bi bi-x-circle-fill"></i>
+                                            <span>Chưa thuộc</span>
+                                        </button>
+                                        <button
+                                            class="btn btn-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs"
+                                            id="btnLearned" onclick="markStatus(true)" title="Đã thuộc từ này">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Thuộc</span>
+                                        </button>
+                                    </div>
+
+                                    <button class="btn btn-emerald px-3 py-2 rounded-pill fw-bold btn-sm fc-nav-btn"
+                                        id="btnNextCard" onclick="nextCard()">
+                                        Từ tiếp theo<i class="bi bi-arrow-right ms-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: DETAILED VOCABULARY LIST (CÓ BỘ LỌC THUỘC / CHƯA THUỘC) -->
+                    <div class="tab-pane fade" id="list-pane" role="tabpanel">
+                        <!-- Thanh phân loại bộ lọc từ vựng -->
+                        <div
+                            class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 p-3 bg-white rounded-4 shadow-sm border">
+                            <span class="fw-semibold text-dark small">
+                                <i class="bi bi-funnel me-1 text-success"></i>Phân loại từ:
+                            </span>
+                            <div class="btn-group rounded-pill p-1 bg-light border" role="group">
+                                <button type="button"
+                                    class="btn btn-sm rounded-pill px-3 fw-semibold active btn-success"
+                                    id="filterBtnAll" onclick="filterWordList('all')">
+                                    Tất cả (<span id="countAll">6</span>)
+                                </button>
+                                <button type="button"
+                                    class="btn btn-sm rounded-pill px-3 fw-semibold btn-light text-success"
+                                    id="filterBtnLearned" onclick="filterWordList('learned')">
+                                    <i class="bi bi-check-circle-fill me-1"></i>Đã thuộc (<span
+                                        id="countLearned">0</span>)
+                                </button>
+                                <button type="button"
+                                    class="btn btn-sm rounded-pill px-3 fw-semibold btn-light text-danger"
+                                    id="filterBtnNotLearned" onclick="filterWordList('not_learned')">
+                                    <i class="bi bi-x-circle-fill me-1"></i>Chưa thuộc (<span
+                                        id="countNotLearned">0</span>)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row g-3" id="vocabCardsGrid">
+                            <div class="col-md-6 col-lg-4 vocab-item-wrapper" id="wordCardCol-201" data-word-id="201">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                                    <!-- Hàng tiêu đề: Từ vựng bên trái, Trạng thái & Loa bên phải -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="fw-bold text-dark mb-0">Revenue</h5>
+                                                <span class="text-muted small">/&#x2C8;rev&#x259;nu&#x2D0;/</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cụm bên phải: Badge trạng thái + Nút loa đặt cạnh nhau rõ ràng -->
+                                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                            <div id="wordStatusBadge-201">
+                                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-light rounded-circle shadow-xs"
+                                                onclick="speakWord('Revenue')" title="Nghe phát âm">
+                                                <i class="bi bi-volume-up text-success"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                                        <span class="badge bg-light-green text-emerald border small me-1">noun</span>
+                                        <strong class="text-success small">Doanh thu, t&#x1ED5;ng thu
+                                            nh&#x1EAD;p</strong>
+                                    </div>
+                                    <div class="text-muted x-small fst-italic mt-auto">
+                                        <i class="bi bi-chat-quote me-1"></i>Company revenue increased by 15% in the
+                                        fourth quarter.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 vocab-item-wrapper" id="wordCardCol-202" data-word-id="202">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                                    <!-- Hàng tiêu đề: Từ vựng bên trái, Trạng thái & Loa bên phải -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="fw-bold text-dark mb-0">Budget</h5>
+                                                <span class="text-muted small">/&#x2C8;b&#x28C;d&#x292;&#x26A;t/</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cụm bên phải: Badge trạng thái + Nút loa đặt cạnh nhau rõ ràng -->
+                                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                            <div id="wordStatusBadge-202">
+                                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-light rounded-circle shadow-xs"
+                                                onclick="speakWord('Budget')" title="Nghe phát âm">
+                                                <i class="bi bi-volume-up text-success"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                                        <span class="badge bg-light-green text-emerald border small me-1">noun</span>
+                                        <strong class="text-success small">Ng&#xE2;n s&#xE1;ch t&#xE0;i
+                                            ch&#xED;nh</strong>
+                                    </div>
+                                    <div class="text-muted x-small fst-italic mt-auto">
+                                        <i class="bi bi-chat-quote me-1"></i>The marketing department was allocated a
+                                        budget of $50,000.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 vocab-item-wrapper" id="wordCardCol-203" data-word-id="203">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                                    <!-- Hàng tiêu đề: Từ vựng bên trái, Trạng thái & Loa bên phải -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="fw-bold text-dark mb-0">Expenditure</h5>
+                                                <span
+                                                    class="text-muted small">/&#x26A;k&#x2C8;spend&#x26A;t&#x283;&#x259;r/</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cụm bên phải: Badge trạng thái + Nút loa đặt cạnh nhau rõ ràng -->
+                                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                            <div id="wordStatusBadge-203">
+                                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-light rounded-circle shadow-xs"
+                                                onclick="speakWord('Expenditure')" title="Nghe phát âm">
+                                                <i class="bi bi-volume-up text-success"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                                        <span class="badge bg-light-green text-emerald border small me-1">noun</span>
+                                        <strong class="text-success small">Chi ph&#xED;, s&#x1EF1; chi
+                                            ti&#xEA;u</strong>
+                                    </div>
+                                    <div class="text-muted x-small fst-italic mt-auto">
+                                        <i class="bi bi-chat-quote me-1"></i>We must reduce capital expenditure to
+                                        maintain cash reserves.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 vocab-item-wrapper" id="wordCardCol-204" data-word-id="204">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                                    <!-- Hàng tiêu đề: Từ vựng bên trái, Trạng thái & Loa bên phải -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="fw-bold text-dark mb-0">Audit</h5>
+                                                <span class="text-muted small">/&#x2C8;&#x254;&#x2D0;d&#x26A;t/</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cụm bên phải: Badge trạng thái + Nút loa đặt cạnh nhau rõ ràng -->
+                                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                            <div id="wordStatusBadge-204">
+                                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-light rounded-circle shadow-xs"
+                                                onclick="speakWord('Audit')" title="Nghe phát âm">
+                                                <i class="bi bi-volume-up text-success"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                                        <span class="badge bg-light-green text-emerald border small me-1">noun /
+                                            verb</span>
+                                        <strong class="text-success small">Ki&#x1EC3;m to&#xE1;n, s&#x1EF1; ki&#x1EC3;m
+                                            tra s&#x1ED5; s&#xE1;ch</strong>
+                                    </div>
+                                    <div class="text-muted x-small fst-italic mt-auto">
+                                        <i class="bi bi-chat-quote me-1"></i>An independent firm was hired to conduct an
+                                        annual financial audit.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 vocab-item-wrapper" id="wordCardCol-205" data-word-id="205">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                                    <!-- Hàng tiêu đề: Từ vựng bên trái, Trạng thái & Loa bên phải -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="fw-bold text-dark mb-0">Dividend</h5>
+                                                <span class="text-muted small">/&#x2C8;d&#x26A;v&#x26A;dend/</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cụm bên phải: Badge trạng thái + Nút loa đặt cạnh nhau rõ ràng -->
+                                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                            <div id="wordStatusBadge-205">
+                                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-light rounded-circle shadow-xs"
+                                                onclick="speakWord('Dividend')" title="Nghe phát âm">
+                                                <i class="bi bi-volume-up text-success"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                                        <span class="badge bg-light-green text-emerald border small me-1">noun</span>
+                                        <strong class="text-success small">C&#x1ED5; t&#x1EE9;c</strong>
+                                    </div>
+                                    <div class="text-muted x-small fst-italic mt-auto">
+                                        <i class="bi bi-chat-quote me-1"></i>Shareholders will receive a dividend of 50
+                                        cents per share.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4 vocab-item-wrapper" id="wordCardCol-206" data-word-id="206">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm p-4 bg-white vocab-card-item">
+                                    <!-- Hàng tiêu đề: Từ vựng bên trái, Trạng thái & Loa bên phải -->
+                                    <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div>
+                                                <h5 class="fw-bold text-dark mb-0">Fiscal</h5>
+                                                <span class="text-muted small">/&#x2C8;f&#x26A;skl/</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Cụm bên phải: Badge trạng thái + Nút loa đặt cạnh nhau rõ ràng -->
+                                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                                            <div id="wordStatusBadge-206">
+                                                <span class="badge bg-light text-muted border small">Chưa học</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-light rounded-circle shadow-xs"
+                                                onclick="speakWord('Fiscal')" title="Nghe phát âm">
+                                                <i class="bi bi-volume-up text-success"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bg-light rounded-3 mb-2 border">
+                                        <span
+                                            class="badge bg-light-green text-emerald border small me-1">adjective</span>
+                                        <strong class="text-success small">Thu&#x1ED9;c t&#xE0;i ch&#xED;nh, n&#x103;m
+                                            t&#xE0;i kh&#xF3;a</strong>
+                                    </div>
+                                    <div class="text-muted x-small fst-italic mt-auto">
+                                        <i class="bi bi-chat-quote me-1"></i>The new fiscal year will begin on January
+                                        1st.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="vocabEmptyFilterMsg"
+                            class="text-center py-5 d-none bg-white rounded-4 shadow-sm border mt-3">
+                            <i class="bi bi-inbox text-muted display-4 d-block mb-2"></i>
+                            <p class="text-muted fw-semibold mb-0">Không có từ nào trong danh mục này!</p>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: QUICK QUIZ -->
+                    <div class="tab-pane fade" id="quiz-pane" role="tabpanel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card border-0 rounded-4 shadow-sm p-4 p-md-5 bg-white text-center"
+                                    id="quizContainer">
+                                    <span
+                                        class="badge bg-success-subtle text-success fw-bold px-3 py-1 rounded-pill small mb-3 align-self-center">
+                                        Câu hỏi trắc nghiệm kiểm tra
+                                    </span>
+                                    <h4 class="fw-bold text-dark mb-2" id="quizQuestionWord">Agreement</h4>
+                                    <p class="text-muted small mb-4">Chọn nghĩa tiếng Việt chính xác nhất cho từ vựng
+                                        trên:</p>
+
+                                    <div class="row g-3 text-start mb-4" id="quizOptionsContainer">
+                                        <!-- Sẽ được render tự động qua JS -->
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                                        <span class="text-muted small" id="quizScoreText">Điểm: 0</span>
+                                        <button class="btn btn-emerald px-4 py-2 rounded-pill fw-bold"
+                                            onclick="generateNextQuiz()">
+                                            Câu tiếp theo<i class="bi bi-arrow-right ms-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. JAVASCRIPT LOGIC CHO BÀI HỌC TỪ VỰNG ================= -->
+        <script>
+            // Dữ liệu từ vựng truyền từ Server sang Client
+            const vocabData = [{ "Id": 201, "TopicId": 2, "Word": "Revenue", "Phonetic": "/\u02C8rev\u0259nu\u02D0/", "Meaning": "Doanh thu, t\u1ED5ng thu nh\u1EADp", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "Company revenue increased by 15% in the fourth quarter.", "ImageUrl": "" }, { "Id": 202, "TopicId": 2, "Word": "Budget", "Phonetic": "/\u02C8b\u028Cd\u0292\u026At/", "Meaning": "Ng\u00E2n s\u00E1ch t\u00E0i ch\u00EDnh", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "The marketing department was allocated a budget of $50,000.", "ImageUrl": "" }, { "Id": 203, "TopicId": 2, "Word": "Expenditure", "Phonetic": "/\u026Ak\u02C8spend\u026At\u0283\u0259r/", "Meaning": "Chi ph\u00ED, s\u1EF1 chi ti\u00EAu", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "We must reduce capital expenditure to maintain cash reserves.", "ImageUrl": "" }, { "Id": 204, "TopicId": 2, "Word": "Audit", "Phonetic": "/\u02C8\u0254\u02D0d\u026At/", "Meaning": "Ki\u1EC3m to\u00E1n, s\u1EF1 ki\u1EC3m tra s\u1ED5 s\u00E1ch", "PartOfSpeech": "noun / verb", "Topic": "Finance", "Example": "An independent firm was hired to conduct an annual financial audit.", "ImageUrl": "" }, { "Id": 205, "TopicId": 2, "Word": "Dividend", "Phonetic": "/\u02C8d\u026Av\u026Adend/", "Meaning": "C\u1ED5 t\u1EE9c", "PartOfSpeech": "noun", "Topic": "Finance", "Example": "Shareholders will receive a dividend of 50 cents per share.", "ImageUrl": "" }, { "Id": 206, "TopicId": 2, "Word": "Fiscal", "Phonetic": "/\u02C8f\u026Askl/", "Meaning": "Thu\u1ED9c t\u00E0i ch\u00EDnh, n\u0103m t\u00E0i kh\u00F3a", "PartOfSpeech": "adjective", "Topic": "Finance", "Example": "The new fiscal year will begin on January 1st.", "ImageUrl": "" }];
+            let currentIndex = 0;
+            let quizScore = 0;
+            const learnedStatus = {}; // Lưu trạng thái từ: { [wordId]: true/false }
+
+            function updateFlashcardUI() {
+                if (!vocabData || vocabData.length === 0) return;
+
+                const currentWord = vocabData[currentIndex];
+
+                // Cập nhật text mặt trước (Word, Phonetic, POS, và Ví dụ)
+                document.getElementById('fcWord').innerText = currentWord.Word;
+                document.getElementById('fcPhonetic').innerText = currentWord.Phonetic;
+                document.getElementById('fcPartOfSpeech').innerText = currentWord.PartOfSpeech;
+                document.getElementById('fcExample').innerText = `"${currentWord.Example}"`;
+
+                // Cập nhật hình ảnh minh họa ở MẶT TRƯỚC
+                const imgTagFront = document.getElementById('fcImageTagFront');
+                const imgPlaceholderFront = document.getElementById('fcImagePlaceholderFront');
+                if (imgTagFront && imgPlaceholderFront) {
+                    if (currentWord.ImageUrl && currentWord.ImageUrl.trim() !== "") {
+                        imgTagFront.src = currentWord.ImageUrl;
+                        imgTagFront.style.display = 'block';
+                        imgPlaceholderFront.style.display = 'none';
+                    } else {
+                        imgTagFront.style.display = 'none';
+                        imgPlaceholderFront.style.display = 'block';
+                    }
+                }
+
+                // Cập nhật text mặt sau (Nghĩa tiếng Việt)
+                document.getElementById('fcMeaning').innerText = currentWord.Meaning;
+
+                // Cập nhật hình ảnh minh họa ở MẶT SAU
+                const imgTagBack = document.getElementById('fcImageTagBack');
+                const imgPlaceholderBack = document.getElementById('fcImagePlaceholderBack');
+                if (imgTagBack && imgPlaceholderBack) {
+                    if (currentWord.ImageUrl && currentWord.ImageUrl.trim() !== "") {
+                        imgTagBack.src = currentWord.ImageUrl;
+                        imgTagBack.style.display = 'block';
+                        imgPlaceholderBack.style.display = 'none';
+                    } else {
+                        imgTagBack.style.display = 'none';
+                        imgPlaceholderBack.style.display = 'block';
+                    }
+                }
+
+                // Cập nhật giao diện trạng thái Thuộc / Chưa thuộc hiện tại (khóa nút nếu đã chọn)
+                updateStatusButtonsUI(currentWord.Id);
+
+                // Cập nhật chỉ số & thanh tiến độ
+                document.getElementById('cardCurrentIndex').innerText = currentIndex + 1;
+                const progressPercent = ((currentIndex + 1) / vocabData.length) * 100;
+                document.getElementById('cardProgressBar').style.width = `${progressPercent}%`;
+
+                // Trạng thái nút Next / Prev
+                document.getElementById('btnPrevCard').disabled = (currentIndex === 0);
+                document.getElementById('btnNextCard').disabled = (currentIndex === vocabData.length - 1);
+
+                // Đảm bảo thẻ quay về mặt trước khi chuyển từ mới
+                document.getElementById('mainFlashcard').classList.remove('is-flipped');
+            }
+
+            // Đánh dấu trạng thái Thuộc (true) hoặc Chưa thuộc (false)
+            // Quy tắc: Chỉ được chọn 1 trong 2, khi đã chọn thì không thể ấn đổi ngược lại cho từ này
+            function markStatus(isLearned) {
+                if (!vocabData || vocabData.length === 0) return;
+                const currentWord = vocabData[currentIndex];
+
+                // Nếu từ này ĐÃ ĐƯỢC CHỌN TRƯỚC ĐÓ rồi thì KHÔNG cho đổi
+                if (learnedStatus[currentWord.Id] !== undefined) {
+                    return;
+                }
+
+                learnedStatus[currentWord.Id] = isLearned;
+                updateStatusButtonsUI(currentWord.Id);
+                updateVocabListClassification();
+
+                // Tự động chuyển sang từ tiếp theo nếu chưa ở cuối
+                if (currentIndex < vocabData.length - 1) {
+                    setTimeout(() => {
+                        nextCard();
+                    }, 350);
+                }
+            }
+
+            function updateStatusButtonsUI(wordId) {
+                const btnLearned = document.getElementById('btnLearned');
+                const btnNotLearned = document.getElementById('btnNotLearned');
+                if (!btnLearned || !btnNotLearned) return;
+
+                const status = learnedStatus[wordId];
+                if (status === true) {
+                    // Đã chọn Thuộc -> Khóa cả 2 nút, nút Chưa thuộc bị disabled hoàn toàn
+                    btnLearned.className = 'btn btn-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-sm';
+                    btnLearned.disabled = true;
+                    btnLearned.style.cursor = 'default';
+
+                    btnNotLearned.className = 'btn btn-outline-secondary px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 opacity-50';
+                    btnNotLearned.disabled = true;
+                    btnNotLearned.style.cursor = 'not-allowed';
+                } else if (status === false) {
+                    // Đã chọn Chưa thuộc -> Khóa cả 2 nút, nút Thuộc bị disabled hoàn toàn
+                    btnNotLearned.className = 'btn btn-danger text-white px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-sm';
+                    btnNotLearned.disabled = true;
+                    btnNotLearned.style.cursor = 'default';
+
+                    btnLearned.className = 'btn btn-outline-secondary px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 opacity-50';
+                    btnLearned.disabled = true;
+                    btnLearned.style.cursor = 'not-allowed';
+                } else {
+                    // Chưa chọn: Cả 2 nút sẵn sàng cho người dùng bấm 1 trong 2
+                    btnLearned.className = 'btn btn-outline-success px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs';
+                    btnLearned.disabled = false;
+                    btnLearned.style.cursor = 'pointer';
+
+                    btnNotLearned.className = 'btn btn-outline-danger px-3 py-2 rounded-pill fw-semibold btn-sm d-flex align-items-center gap-1 shadow-xs';
+                    btnNotLearned.disabled = false;
+                    btnNotLearned.style.cursor = 'pointer';
+                }
+            }
+
+            // ================= PHÂN LOẠI & LỌC TỪ TRONG DANH SÁCH =================
+            let currentFilter = 'all';
+
+            function updateVocabListClassification() {
+                let countLearned = 0;
+                let countNotLearned = 0;
+
+                vocabData.forEach(w => {
+                    const status = learnedStatus[w.Id];
+                    const badge = document.getElementById(`wordStatusBadge-${w.Id}`);
+                    if (status === true) {
+                        countLearned++;
+                        if (badge) {
+                            badge.innerHTML = '<span class="badge bg-success-subtle text-success border border-success border-opacity-25 fw-semibold small"><i class="bi bi-check-circle-fill me-1"></i>Đã thuộc</span>';
+                        }
+                    } else if (status === false) {
+                        countNotLearned++;
+                        if (badge) {
+                            badge.innerHTML = '<span class="badge bg-danger-subtle text-danger border border-danger border-opacity-25 fw-semibold small"><i class="bi bi-x-circle-fill me-1"></i>Chưa thuộc</span>';
+                        }
+                    }
+                });
+
+                const countLearnedEl = document.getElementById('countLearned');
+                const countNotLearnedEl = document.getElementById('countNotLearned');
+                if (countLearnedEl) countLearnedEl.innerText = countLearned;
+                if (countNotLearnedEl) countNotLearnedEl.innerText = countNotLearned;
+
+                // Cập nhật lại chế độ lọc hiện tại
+                filterWordList(currentFilter);
+            }
+
+            function filterWordList(filterType) {
+                currentFilter = filterType;
+
+                // Đổi trạng thái active cho nút bấm lọc
+                const btnAll = document.getElementById('filterBtnAll');
+                const btnLearned = document.getElementById('filterBtnLearned');
+                const btnNot = document.getElementById('filterBtnNotLearned');
+
+                if (btnAll && btnLearned && btnNot) {
+                    btnAll.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'all' ? 'active btn-success text-white' : 'btn-light text-secondary');
+                    btnLearned.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'learned' ? 'active btn-success text-white' : 'btn-light text-success');
+                    btnNot.className = 'btn btn-sm rounded-pill px-3 fw-semibold ' + (filterType === 'not_learned' ? 'active btn-danger text-white' : 'btn-light text-danger');
+                }
+
+                let visibleCount = 0;
+                const allItemWrappers = document.querySelectorAll('.vocab-item-wrapper');
+                allItemWrappers.forEach(item => {
+                    const wordId = parseInt(item.getAttribute('data-word-id'));
+                    const status = learnedStatus[wordId];
+
+                    let isVisible = false;
+                    if (filterType === 'all') {
+                        isVisible = true;
+                    } else if (filterType === 'learned') {
+                        isVisible = (status === true);
+                    } else if (filterType === 'not_learned') {
+                        isVisible = (status === false);
+                    }
+
+                    if (isVisible) {
+                        item.classList.remove('d-none');
+                        visibleCount++;
+                    } else {
+                        item.classList.add('d-none');
+                    }
+                });
+
+                // Hiển thị thông báo nếu không có từ nào theo bộ lọc
+                const emptyMsg = document.getElementById('vocabEmptyFilterMsg');
+                if (emptyMsg) {
+                    if (visibleCount === 0) {
+                        emptyMsg.classList.remove('d-none');
+                    } else {
+                        emptyMsg.classList.add('d-none');
+                    }
+                }
+            }
+
+            function flipCurrentCard() {
+                document.getElementById('mainFlashcard').classList.toggle('is-flipped');
+            }
+
+            function nextCard() {
+                if (currentIndex < vocabData.length - 1) {
+                    currentIndex++;
+                    updateFlashcardUI();
+                }
+            }
+
+            function prevCard() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateFlashcardUI();
+                }
+            }
+
+            function playCurrentWordAudio() {
+                if (vocabData && vocabData.length > 0) {
+                    speakWord(vocabData[currentIndex].Word);
+                }
+            }
+
+            // ================= MINI QUIZ GENERATOR =================
+            function generateNextQuiz() {
+                if (!vocabData || vocabData.length === 0) return;
+
+                const randomWordIndex = Math.floor(Math.random() * vocabData.length);
+                const correctWord = vocabData[randomWordIndex];
+                document.getElementById('quizQuestionWord').innerText = correctWord.Word;
+
+                // Lấy 3 đáp án sai ngẫu nhiên
+                const distractors = vocabData.filter(w => w.Id !== correctWord.Id);
+                const shuffledDistractors = distractors.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+                const allOptions = [correctWord, ...shuffledDistractors].sort(() => 0.5 - Math.random());
+
+                const container = document.getElementById('quizOptionsContainer');
+                container.innerHTML = '';
+
+                allOptions.forEach((opt, idx) => {
+                    const isCorrect = (opt.Id === correctWord.Id);
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6';
+                    col.innerHTML = `
+                <button class="btn btn-outline-secondary w-100 p-3 rounded-3 text-start fw-semibold quiz-opt-btn" onclick="checkQuizAnswer(this, ${isCorrect})">
+                    <span class="badge bg-light text-dark border me-2">${String.fromCharCode(65 + idx)}</span>${opt.Meaning}
+                </button>
+            `;
+                    container.appendChild(col);
+                });
+            }
+
+            function checkQuizAnswer(button, isCorrect) {
+                const allButtons = document.querySelectorAll('.quiz-opt-btn');
+                allButtons.forEach(b => b.disabled = true);
+
+                if (isCorrect) {
+                    button.classList.remove('btn-outline-secondary');
+                    button.classList.add('btn-success', 'text-white');
+                    quizScore += 10;
+                    document.getElementById('quizScoreText').innerText = `Điểm: ${quizScore} (+10đ)`;
+                } else {
+                    button.classList.remove('btn-outline-secondary');
+                    button.classList.add('btn-danger', 'text-white');
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                updateFlashcardUI();
+                generateNextQuiz();
+            });
+        </script>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer bg-white border-top pt-5 pb-4 mt-auto">
+        <div class="container-fluid px-lg-5">
+            <div class="row g-4 mb-4">
+                <!-- Col 1: Brand & Giới thiệu -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="brand-icon-box">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <div>
+                            <span class="fw-bold text-success fs-5">TOEIC<span class="text-dark">GREEN</span></span>
+                            <span class="d-block text-muted x-small fw-semibold text-uppercase tracking-wider">Luyện Thi
+                                Thông Minh</span>
+                        </div>
+                    </div>
+                    <p class="text-secondary small mb-3 lh-base">
+                        Nền tảng học và luyện thi TOEIC trực tuyến hàng đầu, cung cấp kho đề thi chuẩn cấu trúc ETS,
+                        phương pháp học từ vựng thông minh và phân tích chi tiết lộ trình học tập.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Line: Copyright & Policies -->
+            <div
+                class="border-top pt-3 mt-2 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                <p class="text-muted x-small mb-0">
+                    &copy; 2026 <strong class="text-success">TOEIC Green</strong>. Mọi quyền được bảo lưu.
+                    Thiết kế dành cho học viên ôn thi TOEIC.
+                </p>
+                <div class="d-flex gap-3 x-small">
+                    <a class="text-muted text-decoration-none hover-success" href="/Student/Home/Privacy">Điều khoản sử
+                        dụng</a>
+                    <span class="text-muted">•</span>
+                    <a class="text-muted text-decoration-none hover-success" href="/Student/Home/Privacy">Chính sách bảo
+                        mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== AUTH MODAL ===================== -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                <div class="modal-header border-0 pb-0 justify-content-end">
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-0">
+                    <div class="text-center mb-3">
+                        <div class="brand-icon-box mx-auto mb-2" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark" id="modalTitle">Đăng nhập tài khoản</h4>
+                        <p class="text-muted small mb-0" id="modalSubtitle">Truy cập hàng trăm bộ đề và từ vựng TOEIC
+                            miễn phí</p>
+                    </div>
+
+                    <!-- Nút đăng nhập bằng Google và Facebook nằm ngang nhau -->
+                    <div class="row g-2 mb-3 mt-3">
+                        <div class="col-6">
+                            <button type="button"
+                                class="btn btn-social-google w-100 py-2 d-flex align-items-center justify-content-center gap-2 border shadow-xs"
+                                onclick="alert('Đang kết nối tài khoản Google...')">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                                </svg>
+                                <span class="fw-semibold small text-dark">Google</span>
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button"
+                                class="btn btn-social-facebook w-100 py-2 d-flex align-items-center justify-content-center gap-2 border-0 text-white shadow-xs"
+                                onclick="alert('Đang kết nối tài khoản Facebook...')">
+                                <i class="bi bi-facebook fs-5"></i>
+                                <span class="fw-semibold small">Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Đường phân cách hoặc -->
+                    <div class="position-relative text-center my-3">
+                        <hr class="text-muted opacity-25">
+                        <span
+                            class="position-absolute top-50 start-50 translate-middle bg-white px-3 small text-muted">hoặc
+                            bằng email</span>
+                    </div>
+
+                    <form id="authForm"
+                        onsubmit="event.preventDefault(); alert('Đã gửi thông tin thành công!'); bootstrap.Modal.getInstance(document.getElementById('authModal')).hide();">
+                        <div class="mb-3" id="registerNameGroup" style="display: none;">
+                            <label class="form-label small fw-semibold text-muted">Họ và tên</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-success"><i
+                                        class="bi bi-person"></i></span>
+                                <input type="text" class="form-control bg-light border-start-0"
+                                    placeholder="Nguyễn Văn A">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Email / Tên đăng nhập</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-success"><i
+                                        class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control bg-light border-start-0"
+                                    placeholder="student@toeicgreen.vn" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Mật khẩu</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-success"><i
+                                        class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control bg-light border-start-0"
+                                    placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4 small" id="loginOptions">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe" checked>
+                                <label class="form-check-label text-muted" for="rememberMe">Ghi nhớ</label>
+                            </div>
+                            <a href="#" class="text-success text-decoration-none fw-semibold">Quên mật khẩu?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth-register w-100 py-2 fw-bold shadow-sm"
+                            id="authSubmitBtn">
+                            Đăng nhập
+                        </button>
+
+                        <div class="text-center mt-3 small">
+                            <span class="text-muted" id="authSwitchText">Chưa có tài khoản?</span>
+                            <a href="javascript:void(0)" class="text-success fw-bold text-decoration-none ms-1"
+                                id="authSwitchLink" onclick="toggleAuthMode()">Đăng ký ngay</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=ufsgDTOp8vIPduqVtdxh_96oy_ruhr3uw6lLVOjxdRs"></script>
+
+</body>
+
+</html>

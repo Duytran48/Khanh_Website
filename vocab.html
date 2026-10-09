@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ch&#x1EE7; &#x110;&#x1EC1; T&#x1EEB; V&#x1EF1;ng TOEIC - TOEIC Master</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 & Icons -->
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom Site CSS -->
+    <link rel="stylesheet" href="./css/site.css?v=sYQMyWPoGxHko4SKSE2M6L6KDpTRG8EgxznB8csKNCI" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- ===================== HEADER ===================== -->
+    <header class="site-header sticky-top">
+        <div class="container-fluid px-lg-5">
+            <nav class="navbar navbar-expand-lg py-0">
+                <!-- 1. Logo (Left) -->
+                <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="./index.html">
+                    <div class="brand-icon-box">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <span class="brand-title">TOEIC<span class="brand-highlight">GREEN</span></span>
+                        <span class="brand-sub">Mastery Learning</span>
+                    </div>
+                </a>
+
+                <!-- Mobile Toggle -->
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarMain">
+                    <i class="bi bi-list fs-2 text-success"></i>
+                </button>
+
+                <!-- Navbar Content -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarMain">
+                    <!-- 2. Smooth Floating Background Slider Navbar (Center) -->
+                    <div class="navbar-slidebar-wrapper mx-auto my-2 my-lg-0" id="slidebarContainer">
+                        <!-- Floating Background Pill Indicator -->
+                        <div class="nav-slider-indicator" id="navIndicator"></div>
+
+                        <ul class="nav custom-slide-nav" id="mainSlideNav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="./index.html">
+                                    <i class="bi bi-house-door-fill me-1"></i>Trang chủ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="./exams.html">
+                                    <i class="bi bi-journal-text me-1"></i>Đề thi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/Student/Home/Vocab">
+                                    <i class="bi bi-translate me-1"></i>Từ vựng
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/Student/Home/Grammar">
+                                    <i class="bi bi-journal-code me-1"></i>Ngữ pháp
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Auth Buttons (Right) -->
+                    <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+                        <button class="btn btn-auth-login" data-bs-toggle="modal" data-bs-target="#authModal"
+                            onclick="setAuthMode('login')">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Đăng nhập
+                        </button>
+                        <button class="btn btn-auth-register shadow-sm" data-bs-toggle="modal"
+                            data-bs-target="#authModal" onclick="setAuthMode('register')">
+                            <i class="bi bi-person-plus-fill me-1"></i>Đăng ký
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================== BODY CONTENT ===================== -->
+    <main role="main" class="flex-grow-1">
+
+        <div class="page-container py-4">
+            <div class="container-fluid px-lg-5">
+                <!-- Breadcrumb & Header -->
+                <div class="mb-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-2">
+                            <li class="breadcrumb-item"><a class="text-decoration-none text-success"
+                                    href="./index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Từ vựng TOEIC</li>
+                        </ol>
+                    </nav>
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                        <div>
+                            <h2 class="fw-bold text-dark mb-1">600 Từ Vựng TOEIC Cốt Lõi</h2>
+                            <p class="text-muted small mb-0">Học theo phương pháp lặp lại ngắt quãng (Spaced Repetition)
+                                và phát âm bản xứ chuẩn.</p>
+                        </div>
+
+                        <!-- Vocabulary Topic Filter Pills -->
+                        <div class="vocab-filter-pills d-flex flex-wrap gap-2">
+                            <button class="filter-btn active" data-vocab-filter="all"
+                                onclick="filterVocabTopics('all')">
+                                <i class="bi bi-grid-fill me-1"></i>Tất cả (6)
+                            </button>
+                            <button class="filter-btn" data-vocab-filter="completed"
+                                onclick="filterVocabTopics('completed')">
+                                <i class="bi bi-check-circle-fill text-success me-1"></i>Đã học (2)
+                            </button>
+                            <button class="filter-btn" data-vocab-filter="in-progress"
+                                onclick="filterVocabTopics('in-progress')">
+                                <i class="bi bi-hourglass-split text-warning me-1"></i>Đang học (2)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vocab Cards Grid -->
+                <div class="row g-4" id="vocabTopicsGrid">
+                    <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="completed">
+                        <div
+                            class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                            <div>
+                                <!-- Header: Icon & Badge -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-file-earmark-text-fill fs-4"></i>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <span
+                                            class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target
+                                            600&#x2B;</span>
+                                        <span
+                                            class="badge bg-success-subtle text-success border border-success border-opacity-25 px-2 py-1 rounded-pill small">Hoàn
+                                            thành</span>
+                                    </div>
+                                </div>
+
+                                <!-- Title & Description -->
+                                <h5 class="fw-bold text-dark mb-2">H&#x1EE3;p &#x110;&#x1ED3;ng &amp; &#x110;&#xE0;m
+                                    Ph&#xE1;n (Contracts)</h5>
+                                <p class="text-muted small mb-4">C&#xE1;c &#x111;i&#x1EC1;u kho&#x1EA3;n
+                                    th&#x1B0;&#x1A1;ng l&#x1B0;&#x1EE3;ng, k&#xFD; k&#x1EBF;t v&#x103;n b&#x1EA3;n
+                                    v&#xE0; th&#x1ECF;a thu&#x1EAD;n kinh doanh.</p>
+                            </div>
+
+                            <!-- Progress & Action -->
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span class="text-muted">Tiến độ từ vựng:</span>
+                                    <strong class="text-success">
+                                        10 / 10 từ (100%)
+                                    </strong>
+                                </div>
+                                <div class="progress mb-4" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                                </div>
+
+                                <!-- Button by Status -->
+                                <a class="btn btn-outline-success w-100 fw-bold py-2 rounded-3 text-decoration-none"
+                                    href="/Student/Home/VocabDetail/1">
+                                    <i class="bi bi-arrow-repeat me-1"></i> Ôn tập lại (10 từ)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="in-progress">
+                        <div
+                            class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                            <div>
+                                <!-- Header: Icon & Badge -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-cash-coin fs-4"></i>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <span
+                                            class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target
+                                            700&#x2B;</span>
+                                        <span
+                                            class="badge bg-warning-subtle text-warning-emphasis border border-warning border-opacity-25 px-2 py-1 rounded-pill small">Đang
+                                            học</span>
+                                    </div>
+                                </div>
+
+                                <!-- Title & Description -->
+                                <h5 class="fw-bold text-dark mb-2">T&#xE0;i Ch&#xED;nh &amp; Doanh Thu (Finance)</h5>
+                                <p class="text-muted small mb-4">B&#xE1;o c&#xE1;o doanh s&#x1ED1;, thu&#x1EBF;,
+                                    ph&#xE2;n t&#xED;ch chi ph&#xED; v&#xE0; th&#x1ECB; tr&#x1B0;&#x1EDD;ng
+                                    &#x111;&#x1EA7;u t&#x1B0; ch&#x1EE9;ng kho&#xE1;n.</p>
+                            </div>
+
+                            <!-- Progress & Action -->
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span class="text-muted">Tiến độ từ vựng:</span>
+                                    <strong class="text-warning-emphasis">
+                                        6 / 10 từ (60%)
+                                    </strong>
+                                </div>
+                                <div class="progress mb-4" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%"></div>
+                                </div>
+
+                                <!-- Button by Status -->
+                                <a class="btn btn-warning w-100 fw-bold py-2 rounded-3 text-dark text-decoration-none"
+                                    href="/Student/Home/VocabDetail/2">
+                                    <i class="bi bi-play-fill me-1"></i> Học tiếp (6/10 từ)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="in-progress">
+                        <div
+                            class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                            <div>
+                                <!-- Header: Icon & Badge -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-briefcase-fill fs-4"></i>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <span
+                                            class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target
+                                            500&#x2B;</span>
+                                        <span
+                                            class="badge bg-warning-subtle text-warning-emphasis border border-warning border-opacity-25 px-2 py-1 rounded-pill small">Đang
+                                            học</span>
+                                    </div>
+                                </div>
+
+                                <!-- Title & Description -->
+                                <h5 class="fw-bold text-dark mb-2">Qu&#x1EA3;n Tr&#x1ECB; V&#x103;n Ph&#xF2;ng (General
+                                    Business)</h5>
+                                <p class="text-muted small mb-4">Giao ti&#x1EBF;p n&#x1ED9;i b&#x1ED9;, ph&#xE2;n
+                                    c&#xF4;ng d&#x1EF1; &#xE1;n, g&#x1EED;i email v&#xE0; l&#x1ECB;ch tr&#xEC;nh
+                                    l&#xE0;m vi&#x1EC7;c.</p>
+                            </div>
+
+                            <!-- Progress & Action -->
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span class="text-muted">Tiến độ từ vựng:</span>
+                                    <strong class="text-warning-emphasis">
+                                        4 / 10 từ (40%)
+                                    </strong>
+                                </div>
+                                <div class="progress mb-4" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"></div>
+                                </div>
+
+                                <!-- Button by Status -->
+                                <a class="btn btn-warning w-100 fw-bold py-2 rounded-3 text-dark text-decoration-none"
+                                    href="/Student/Home/VocabDetail/3">
+                                    <i class="bi bi-play-fill me-1"></i> Học tiếp (4/10 từ)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="completed">
+                        <div
+                            class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                            <div>
+                                <!-- Header: Icon & Badge -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people-fill fs-4"></i>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <span
+                                            class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target
+                                            650&#x2B;</span>
+                                        <span
+                                            class="badge bg-success-subtle text-success border border-success border-opacity-25 px-2 py-1 rounded-pill small">Hoàn
+                                            thành</span>
+                                    </div>
+                                </div>
+
+                                <!-- Title & Description -->
+                                <h5 class="fw-bold text-dark mb-2">Tuy&#x1EC3;n D&#x1EE5;ng &amp; Nh&#xE2;n S&#x1EF1;
+                                    (Personnel)</h5>
+                                <p class="text-muted small mb-4">Quy tr&#xEC;nh ph&#x1ECF;ng v&#x1EA5;n, h&#x1ED3;
+                                    s&#x1A1; &#x1EE9;ng vi&#xEA;n, th&#x103;ng ch&#x1EE9;c v&#xE0; ch&#xED;nh s&#xE1;ch
+                                    b&#x1EA3;o hi&#x1EC3;m.</p>
+                            </div>
+
+                            <!-- Progress & Action -->
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span class="text-muted">Tiến độ từ vựng:</span>
+                                    <strong class="text-success">
+                                        10 / 10 từ (100%)
+                                    </strong>
+                                </div>
+                                <div class="progress mb-4" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                                </div>
+
+                                <!-- Button by Status -->
+                                <a class="btn btn-outline-success w-100 fw-bold py-2 rounded-3 text-decoration-none"
+                                    href="/Student/Home/VocabDetail/4">
+                                    <i class="bi bi-arrow-repeat me-1"></i> Ôn tập lại (10 từ)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="not-started">
+                        <div
+                            class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                            <div>
+                                <!-- Header: Icon & Badge -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-airplane-engines-fill fs-4"></i>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <span
+                                            class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target
+                                            550&#x2B;</span>
+                                    </div>
+                                </div>
+
+                                <!-- Title & Description -->
+                                <h5 class="fw-bold text-dark mb-2">Du L&#x1ECB;ch &amp; &#x110;&#x1EB7;t Ph&#xF2;ng
+                                    (Travel &amp; Hotel)</h5>
+                                <p class="text-muted small mb-4">H&#xE0;nh tr&#xEC;nh bay, th&#x1EE7; t&#x1EE5;c
+                                    h&#x1EA3;i quan, &#x111;&#x1EB7;t ph&#xF2;ng ngh&#x1EC9; d&#x1B0;&#x1EE1;ng v&#xE0;
+                                    h&#x1ED9;i ngh&#x1ECB; qu&#x1ED1;c t&#x1EBF;.</p>
+                            </div>
+
+                            <!-- Progress & Action -->
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span class="text-muted">Tiến độ từ vựng:</span>
+                                    <strong class="text-muted">
+                                        0 / 10 từ (0%)
+                                    </strong>
+                                </div>
+                                <div class="progress mb-4" style="height: 8px;">
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%"></div>
+                                </div>
+
+                                <!-- Button by Status -->
+                                <a class="btn btn-emerald w-100 fw-bold py-2 rounded-3 text-decoration-none"
+                                    href="/Student/Home/VocabDetail/5">
+                                    <i class="bi bi-book me-1"></i> Bắt đầu học
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 vocab-topic-item" data-status="not-started">
+                        <div
+                            class="card h-100 border-0 rounded-4 shadow-sm vocab-topic-card p-4 d-flex flex-column justify-content-between bg-white position-relative">
+                            <div>
+                                <!-- Header: Icon & Badge -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div
+                                        class="topic-icon-box rounded-3 bg-light-green text-success d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-box-seam-fill fs-4"></i>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <span
+                                            class="badge bg-light text-secondary border px-2 py-1 rounded-pill small">Target
+                                            600&#x2B;</span>
+                                    </div>
+                                </div>
+
+                                <!-- Title & Description -->
+                                <h5 class="fw-bold text-dark mb-2">Mua S&#x1EAF;m &amp; H&#x1EAD;u C&#x1EA7;n (Shopping
+                                    &amp; Shipping)</h5>
+                                <p class="text-muted small mb-4">&#x110;&#x1EB7;t &#x111;&#x1A1;n h&#xE0;ng,
+                                    chu&#x1ED7;i cung &#x1EE9;ng, v&#x1EAD;n chuy&#x1EC3;n kho b&#xE3;i v&#xE0;
+                                    ch&#xED;nh s&#xE1;ch ho&#xE0;n tr&#x1EA3;.</p>
+                            </div>
+
+                            <!-- Progress & Action -->
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center small mb-1">
+                                    <span class="text-muted">Tiến độ từ vựng:</span>
+                                    <strong class="text-muted">
+                                        0 / 10 từ (0%)
+                                    </strong>
+                                </div>
+                                <div class="progress mb-4" style="height: 8px;">
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%"></div>
+                                </div>
+
+                                <!-- Button by Status -->
+                                <a class="btn btn-emerald w-100 fw-bold py-2 rounded-3 text-decoration-none"
+                                    href="/Student/Home/VocabDetail/6">
+                                    <i class="bi bi-book me-1"></i> Bắt đầu học
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer bg-white border-top pt-5 pb-4 mt-auto">
+        <div class="container-fluid px-lg-5">
+            <div class="row g-4 mb-4">
+                <!-- Col 1: Brand & Giới thiệu -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="brand-icon-box">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <div>
+                            <span class="fw-bold text-success fs-5">TOEIC<span class="text-dark">GREEN</span></span>
+                            <span class="d-block text-muted x-small fw-semibold text-uppercase tracking-wider">Luyện Thi
+                                Thông Minh</span>
+                        </div>
+                    </div>
+                    <p class="text-secondary small mb-3 lh-base">
+                        Nền tảng học và luyện thi TOEIC trực tuyến hàng đầu, cung cấp kho đề thi chuẩn cấu trúc ETS,
+                        phương pháp học từ vựng thông minh và phân tích chi tiết lộ trình học tập.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Line: Copyright & Policies -->
+            <div
+                class="border-top pt-3 mt-2 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                <p class="text-muted x-small mb-0">
+                    &copy; 2026 <strong class="text-success">TOEIC Green</strong>. Mọi quyền được bảo lưu.
+                    Thiết kế dành cho học viên ôn thi TOEIC.
+                </p>
+                <div class="d-flex gap-3 x-small">
+                    <a class="text-muted text-decoration-none hover-success" href="/Student/Home/Privacy">Điều khoản sử
+                        dụng</a>
+                    <span class="text-muted">•</span>
+                    <a class="text-muted text-decoration-none hover-success" href="/Student/Home/Privacy">Chính sách bảo
+                        mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== AUTH MODAL ===================== -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                <div class="modal-header border-0 pb-0 justify-content-end">
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-0">
+                    <div class="text-center mb-3">
+                        <div class="brand-icon-box mx-auto mb-2" style="width: 50px; height: 50px; font-size: 1.5rem;">
+                            <i class="bi bi-mortarboard-fill"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark" id="modalTitle">Đăng nhập tài khoản</h4>
+                        <p class="text-muted small mb-0" id="modalSubtitle">Truy cập hàng trăm bộ đề và từ vựng TOEIC
+                            miễn phí</p>
+                    </div>
+
+                    <!-- Nút đăng nhập bằng Google và Facebook nằm ngang nhau -->
+                    <div class="row g-2 mb-3 mt-3">
+                        <div class="col-6">
+                            <button type="button"
+                                class="btn btn-social-google w-100 py-2 d-flex align-items-center justify-content-center gap-2 border shadow-xs"
+                                onclick="alert('Đang kết nối tài khoản Google...')">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path fill="#4285F4"
+                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                    <path fill="#34A853"
+                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                    <path fill="#FBBC05"
+                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                                    <path fill="#EA4335"
+                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                                </svg>
+                                <span class="fw-semibold small text-dark">Google</span>
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button"
+                                class="btn btn-social-facebook w-100 py-2 d-flex align-items-center justify-content-center gap-2 border-0 text-white shadow-xs"
+                                onclick="alert('Đang kết nối tài khoản Facebook...')">
+                                <i class="bi bi-facebook fs-5"></i>
+                                <span class="fw-semibold small">Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Đường phân cách hoặc -->
+                    <div class="position-relative text-center my-3">
+                        <hr class="text-muted opacity-25">
+                        <span
+                            class="position-absolute top-50 start-50 translate-middle bg-white px-3 small text-muted">hoặc
+                            bằng email</span>
+                    </div>
+
+                    <form id="authForm"
+                        onsubmit="event.preventDefault(); alert('Đã gửi thông tin thành công!'); bootstrap.Modal.getInstance(document.getElementById('authModal')).hide();">
+                        <div class="mb-3" id="registerNameGroup" style="display: none;">
+                            <label class="form-label small fw-semibold text-muted">Họ và tên</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-success"><i
+                                        class="bi bi-person"></i></span>
+                                <input type="text" class="form-control bg-light border-start-0"
+                                    placeholder="Nguyễn Văn A">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Email / Tên đăng nhập</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-success"><i
+                                        class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control bg-light border-start-0"
+                                    placeholder="student@toeicgreen.vn" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Mật khẩu</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0 text-success"><i
+                                        class="bi bi-lock"></i></span>
+                                <input type="password" class="form-control bg-light border-start-0"
+                                    placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-4 small" id="loginOptions">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe" checked>
+                                <label class="form-check-label text-muted" for="rememberMe">Ghi nhớ</label>
+                            </div>
+                            <a href="#" class="text-success text-decoration-none fw-semibold">Quên mật khẩu?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth-register w-100 py-2 fw-bold shadow-sm"
+                            id="authSubmitBtn">
+                            Đăng nhập
+                        </button>
+
+                        <div class="text-center mt-3 small">
+                            <span class="text-muted" id="authSwitchText">Chưa có tài khoản?</span>
+                            <a href="javascript:void(0)" class="text-success fw-bold text-decoration-none ms-1"
+                                id="authSwitchLink" onclick="toggleAuthMode()">Đăng ký ngay</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
+    <script src="./lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/site.js?v=ufsgDTOp8vIPduqVtdxh_96oy_ruhr3uw6lLVOjxdRs"></script>
+
+</body>
+
+</html>

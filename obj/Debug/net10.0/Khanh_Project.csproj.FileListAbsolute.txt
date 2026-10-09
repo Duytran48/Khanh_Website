@@ -184,5 +184,5 @@ D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\compressed\cxw1u354j5-{0}-xmw6
 D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\Khanh_Project.sourcelink.json
 D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-enzvtby4df-enzvtby4df.gz
 E:\Khanh_Project\obj\Debug\net10.0\Khanh_Project.sourcelink.json
-E:\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-cumqnxpvl2-cumqnxpvl2.gz
 E:\Khanh_Project\obj\Debug\net10.0\compressed\cxw1u354j5-{0}-xmw6l33vvz-xmw6l33vvz.gz
+E:\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-7y45jgmhtp-7y45jgmhtp.gz
