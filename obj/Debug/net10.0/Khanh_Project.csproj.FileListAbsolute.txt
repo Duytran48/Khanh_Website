@@ -89,8 +89,6 @@ E:\Khanh_Project\obj\Debug\net10.0\refint\Khanh_Project.dll
 E:\Khanh_Project\obj\Debug\net10.0\Khanh_Project.pdb
 E:\Khanh_Project\obj\Debug\net10.0\Khanh_Project.genruntimeconfig.cache
 E:\Khanh_Project\obj\Debug\net10.0\ref\Khanh_Project.dll
-E:\Khanh_Project\obj\Debug\net10.0\compressed\cxw1u354j5-{0}-oytnsr3pu8-oytnsr3pu8.gz
-E:\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-22dgkia90j-22dgkia90j.gz
 D:\Khanh_Software\Khanh_Project\bin\Debug\net10.0\appsettings.Development.json
 D:\Khanh_Software\Khanh_Project\bin\Debug\net10.0\appsettings.json
 D:\Khanh_Software\Khanh_Project\bin\Debug\net10.0\Khanh_Project.staticwebassets.endpoints.json
@@ -182,5 +180,9 @@ D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\refint\Khanh_Project.dll
 D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\Khanh_Project.pdb
 D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\Khanh_Project.genruntimeconfig.cache
 D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\ref\Khanh_Project.dll
-D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-tv4tbqoa2p-tv4tbqoa2p.gz
 D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\compressed\cxw1u354j5-{0}-xmw6l33vvz-xmw6l33vvz.gz
+D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\Khanh_Project.sourcelink.json
+D:\Khanh_Software\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-enzvtby4df-enzvtby4df.gz
+E:\Khanh_Project\obj\Debug\net10.0\Khanh_Project.sourcelink.json
+E:\Khanh_Project\obj\Debug\net10.0\compressed\net8wn6h07-{0}-cumqnxpvl2-cumqnxpvl2.gz
+E:\Khanh_Project\obj\Debug\net10.0\compressed\cxw1u354j5-{0}-xmw6l33vvz-xmw6l33vvz.gz

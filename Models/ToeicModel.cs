@@ -20,12 +20,20 @@ namespace Khanh_Project.Models
     public class VocabularyWord
     {
         public int Id { get; set; }
+        public int TopicId { get; set; }
         public string Word { get; set; } = string.Empty;
         public string Phonetic { get; set; } = string.Empty;
         public string Meaning { get; set; } = string.Empty;
         public string PartOfSpeech { get; set; } = string.Empty;
         public string Topic { get; set; } = string.Empty;
         public string Example { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
+    }
+
+    public class VocabDetailViewModel
+    {
+        public VocabularyTopic Topic { get; set; } = new();
+        public List<VocabularyWord> Words { get; set; } = new();
     }
 
     public class VocabularyTopic
